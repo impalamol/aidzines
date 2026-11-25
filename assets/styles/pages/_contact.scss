@@ -37,12 +37,18 @@
   }
 }
 
+// Map fills the space left after the studio hours, so the column never overflows
+.contactMapCol {
+  display: flex;
+  flex-direction: column;
+}
+
 .mapPanel {
   position: relative;
   border-radius: $radiusLg;
   overflow: hidden;
   min-height: 360px;
-  height: 100%;
+  flex: 1 1 auto;
   border: 1px solid var(--border);
   background: linear-gradient(var(--gridLine) 1px, transparent 1px) 0 0 / 34px 34px,
     linear-gradient(90deg, var(--gridLine) 1px, transparent 1px) 0 0 / 34px 34px, var(--surfaceSolid);
