@@ -9,10 +9,10 @@
   transition: border-color $durFast ease, transform $durBase $easeOut, background $durFast ease;
 
   .iconTile {
-    margin-bottom: 2rem;
+    margin-bottom: 1.75rem;
   }
 
-  span {
+  > span:not(.iconTile) {
     display: block;
     font-size: $fsSmall;
     color: var(--textMuted);

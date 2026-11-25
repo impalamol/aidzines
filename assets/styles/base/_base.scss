@@ -64,6 +64,17 @@ section {
   padding: $sectionSpace 0;
 }
 
+// Stacked sections share one gap instead of doubling bottom + top padding
+section + section {
+  padding-top: 0;
+}
+
+// Breathing room below the hero's background glow
+.pageHero + section,
+.heroSection + section {
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+}
+
 main {
   position: relative;
   z-index: 1;
