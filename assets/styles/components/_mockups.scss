@@ -1,0 +1,298 @@
+@use "../abstracts" as *;
+
+// ==========================================================
+// Pure-CSS device mockups used as project artwork.
+// Each .projectVisual reads --c1 / --c2 for its palette.
+// ==========================================================
+
+.projectVisual {
+  --c1: #{$violet};
+  --c2: #{$cyan};
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: $radiusMd;
+  overflow: hidden;
+  background: radial-gradient(120% 90% at 0% 0%, var(--c1) 0%, transparent 60%),
+    radial-gradient(100% 100% at 100% 100%, var(--c2) 0%, transparent 55%), var(--bgRaised);
+  @include flexCenter;
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    @include absFill;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: radial-gradient(circle at 50% 50%, #000, transparent 75%);
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, #000, transparent 75%);
+    z-index: -1;
+  }
+
+  &.isTall {
+    aspect-ratio: 4 / 4.6;
+  }
+
+  &.isWide {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.mockBrowser {
+  width: 78%;
+  border-radius: 12px;
+  background: rgba(8, 14, 20, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+  transform: translateY(10%) rotate(-2deg);
+  transition: transform $durSlow $easeOut;
+
+  &.isLight {
+    background: rgba(250, 250, 248, 0.95);
+
+    .mockLine {
+      background: rgba(0, 15, 22, 0.14);
+    }
+
+    .mockBlock {
+      background: rgba(0, 15, 22, 0.06);
+    }
+  }
+}
+
+.mockBar {
+  @include flex(center, flex-start, 5px);
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.18);
+
+  i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(128, 128, 128, 0.45);
+
+    &:first-child {
+      background: #ff5f57;
+    }
+    &:nth-child(2) {
+      background: #febc2e;
+    }
+    &:nth-child(3) {
+      background: #28c840;
+    }
+  }
+
+  .mockUrl {
+    flex: 1;
+    height: 10px;
+    margin-left: 10px;
+    max-width: 50%;
+    border-radius: 6px;
+    background: rgba(128, 128, 128, 0.22);
+  }
+}
+
+.mockBody {
+  padding: 14px;
+  display: grid;
+  gap: 8px;
+}
+
+.mockLine {
+  height: 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.16);
+  width: var(--w, 100%);
+
+  &.isAccent {
+    background: var(--c1);
+    height: 14px;
+  }
+
+  &.isThick {
+    height: 14px;
+  }
+}
+
+.mockRow {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 3), 1fr);
+  gap: 8px;
+}
+
+.mockBlock {
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.07);
+  aspect-ratio: var(--ratio, 1.2);
+
+  &.isFilled {
+    background: linear-gradient(135deg, var(--c1), var(--c2));
+  }
+}
+
+.mockBars {
+  @include flex(flex-end, space-between, 4px);
+  height: 54px;
+
+  i {
+    flex: 1;
+    height: var(--h, 50%);
+    border-radius: 3px 3px 0 0;
+    background: linear-gradient(180deg, var(--c2), var(--c1));
+    transform-origin: bottom;
+  }
+}
+
+.mockPhone {
+  position: absolute;
+  right: 9%;
+  bottom: -14%;
+  width: 26%;
+  aspect-ratio: 9 / 18.5;
+  border-radius: 18px;
+  padding: 5px;
+  background: #0b0f14;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 30px 50px -15px rgba(0, 0, 0, 0.6);
+  transform: rotate(6deg);
+  transition: transform $durSlow $easeOut;
+
+  &.isSolo {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: 34%;
+    transform: rotate(-4deg) translateY(6%);
+  }
+
+  .mockScreen {
+    height: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--c1), var(--c2));
+    padding: 18px 8px 8px;
+    display: grid;
+    align-content: start;
+    gap: 6px;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      width: 34%;
+      height: 6px;
+      border-radius: 6px;
+      background: #0b0f14;
+      transform: translateX(-50%);
+    }
+  }
+
+  .mockLine {
+    background: rgba(255, 255, 255, 0.45);
+    height: 6px;
+  }
+
+  .mockBlock {
+    background: rgba(255, 255, 255, 0.22);
+  }
+}
+
+.mockBadge {
+  position: absolute;
+  left: 8%;
+  top: 10%;
+  @include flex(center, flex-start, 6px);
+  padding: 6px 10px;
+  border-radius: $radiusPill;
+  background: rgba(255, 255, 255, 0.92);
+  color: $ink;
+  font-size: 0.72rem;
+  font-weight: 600;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+  animation: floatY 5s ease-in-out infinite;
+
+  .bi {
+    color: $violetDeep;
+  }
+}
+
+.mockBrandMark {
+  width: 34%;
+  aspect-ratio: 1;
+  border-radius: 30%;
+  background: rgba(255, 255, 255, 0.92);
+  @include flexCenter;
+  font-size: clamp(1.6rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--c1);
+  letter-spacing: -0.06em;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.5);
+  transform: rotate(-6deg);
+  transition: transform $durSlow $easeOut;
+}
+
+.mockSwatches {
+  position: absolute;
+  bottom: 9%;
+  left: 50%;
+  transform: translateX(-50%);
+  @include flex(center, center, 6px);
+
+  i {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    background: var(--sw);
+  }
+}
+
+.mockGraph {
+  width: 76%;
+  padding: 16px;
+  border-radius: 14px;
+  background: rgba(8, 14, 20, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.55);
+
+  .mockKpi {
+    font-size: clamp(1.1rem, 2.6vw, 1.8rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.04em;
+    line-height: 1;
+
+    small {
+      font-size: 0.5em;
+      color: $lime;
+      margin-left: 6px;
+    }
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+
+    path.graphLine {
+      fill: none;
+      stroke: var(--c2);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 600;
+      stroke-dashoffset: 600;
+    }
+
+    path.graphArea {
+      fill: var(--c2);
+      opacity: 0.18;
+    }
+  }
+}
+
+.isRevealed .mockGraph path.graphLine,
+.mockGraph.isRevealed path.graphLine {
+  animation: drawLine 2.2s $easeOut forwards 0.3s;
+}

@@ -1,0 +1,184 @@
+@use "../abstracts" as *;
+
+.formPanel {
+  @include card;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  box-shadow: var(--shadow);
+}
+
+.fieldGroup {
+  position: relative;
+  margin-bottom: 1.25rem;
+
+  label,
+  .fieldLabel {
+    display: block;
+    font-size: $fsSmall;
+    font-weight: 500;
+    color: var(--textMuted);
+    margin-bottom: 0.5rem;
+
+    .requiredMark {
+      color: var(--accentText);
+    }
+  }
+}
+
+.fieldInput {
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.9rem 1.1rem;
+  transition: border-color $durFast ease, box-shadow $durFast ease, background $durFast ease;
+  appearance: none;
+
+  &::placeholder {
+    color: var(--textFaint);
+  }
+
+  &:hover {
+    border-color: var(--borderStrong);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--accentText);
+    box-shadow: 0 0 0 4px var(--accentSoft);
+  }
+
+  &.isInvalid {
+    border-color: $coral;
+    box-shadow: 0 0 0 4px rgba(255, 107, 74, 0.12);
+  }
+}
+
+textarea.fieldInput {
+  min-height: 150px;
+  resize: vertical;
+}
+
+select.fieldInput {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 16 16'%3E%3Cpath fill='%23889' d='M8 11 3 6h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.1rem center;
+  padding-right: 2.5rem;
+}
+
+.fieldError {
+  display: none;
+  font-size: $fsXSmall;
+  color: $coral;
+  margin-top: 0.4rem;
+
+  .isInvalid + & {
+    display: block;
+  }
+}
+
+// Selectable chips (checkbox / radio)
+.chipGroup {
+  @include flex(center, flex-start, 8px);
+  flex-wrap: wrap;
+
+  &.isInvalid .chipOption span {
+    border-color: rgba(255, 107, 74, 0.6);
+  }
+}
+
+.chipOption {
+  position: relative;
+  cursor: pointer;
+  margin: 0 !important;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  span {
+    @include flex(center, flex-start, 8px);
+    padding: 0.7rem 1.1rem;
+    border-radius: $radiusPill;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 0.93rem;
+    font-weight: 500;
+    transition: background $durFast ease, border-color $durFast ease, color $durFast ease, transform $durFast ease;
+
+    .bi {
+      color: var(--accentText);
+      transition: color $durFast ease;
+    }
+  }
+
+  &:hover span {
+    border-color: var(--borderStrong);
+  }
+
+  input:checked + span {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accentInk);
+    transform: translateY(-1px);
+
+    .bi {
+      color: var(--accentInk);
+    }
+  }
+
+  input:focus-visible + span {
+    @include focusRing;
+  }
+}
+
+.formSuccess {
+  display: none;
+  text-align: center;
+  padding: 2rem 0;
+
+  &.isVisible {
+    display: block;
+  }
+
+  .successIcon {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    @include flexCenter;
+    font-size: 2.4rem;
+    background: var(--accent);
+    color: var(--accentInk);
+    animation: popIn 0.7s $easeOut both;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  p {
+    max-width: 42ch;
+    margin-inline: auto;
+  }
+}
+
+.formFootnote {
+  font-size: $fsXSmall;
+  color: var(--textFaint);
+  margin: 1rem 0 0;
+
+  .bi {
+    color: var(--accentText);
+  }
+}
+
+.isSubmitting {
+  pointer-events: none;
+  opacity: 0.7;
+}

@@ -1,0 +1,135 @@
+@use "../abstracts" as *;
+
+// Bootstrap accordion, re-skinned through its CSS variables
+.faqAccordion {
+  --bs-accordion-bg: transparent;
+  --bs-accordion-color: var(--text);
+  --bs-accordion-border-color: var(--border);
+  --bs-accordion-border-width: 1px;
+  --bs-accordion-border-radius: #{$radiusMd};
+  --bs-accordion-inner-border-radius: #{$radiusMd};
+  --bs-accordion-btn-color: var(--text);
+  --bs-accordion-btn-bg: transparent;
+  --bs-accordion-active-color: var(--text);
+  --bs-accordion-active-bg: transparent;
+  --bs-accordion-btn-focus-box-shadow: none;
+  --bs-accordion-btn-padding-x: 1.5rem;
+  --bs-accordion-btn-padding-y: 1.35rem;
+  --bs-accordion-body-padding-x: 1.5rem;
+  --bs-accordion-body-padding-y: 0;
+  --bs-accordion-btn-icon: none;
+  --bs-accordion-btn-active-icon: none;
+
+  .accordion-item {
+    border-radius: $radiusMd !important;
+    border: 1px solid var(--border) !important;
+    background: var(--surface);
+    overflow: hidden;
+    transition: border-color $durFast ease, background $durFast ease;
+
+    & + .accordion-item {
+      margin-top: 0.75rem;
+    }
+
+    &:has(.accordion-button:not(.collapsed)) {
+      border-color: var(--borderStrong) !important;
+      background: var(--surfaceHover);
+    }
+  }
+
+  .accordion-button {
+    font-size: 1.08rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    gap: 1rem;
+    border-radius: $radiusMd !important;
+
+    &::after {
+      content: "+";
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      margin-left: auto;
+      border-radius: 50%;
+      @include flexCenter;
+      font-size: 1.35rem;
+      font-weight: 400;
+      line-height: 1;
+      background: var(--surfaceHover);
+      border: 1px solid var(--border);
+      transition: transform $durBase $easeOut, background $durFast ease, color $durFast ease;
+    }
+
+    &:not(.collapsed) {
+      box-shadow: none;
+
+      &::after {
+        transform: rotate(45deg);
+        background: var(--accent);
+        color: var(--accentInk);
+        border-color: var(--accent);
+      }
+    }
+
+    &:focus-visible {
+      @include focusRing;
+      outline-offset: -3px;
+    }
+  }
+
+  .faqIndex {
+    font-size: $fsSmall;
+    color: var(--textFaint);
+    font-weight: 500;
+    min-width: 1.75rem;
+  }
+
+  .accordion-body {
+    padding-bottom: 1.5rem;
+    padding-left: calc(1.5rem + 2.75rem);
+    color: var(--textMuted);
+
+    p:last-child {
+      margin: 0;
+    }
+
+    @include mqDown(md) {
+      padding-left: 1.5rem;
+    }
+  }
+}
+
+// Careers role accordion variant
+.roleAccordion {
+  .accordion-button {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+  }
+
+  .roleTitle {
+    font-size: 1.25rem;
+    flex: 1 1 260px;
+  }
+
+  .roleMeta {
+    @include flex(center, flex-start, 6px);
+    flex-wrap: wrap;
+    font-weight: 400;
+  }
+
+  .accordion-body {
+    padding-left: 1.5rem;
+  }
+
+  .roleColumns {
+    padding: 0.5rem 0 1rem;
+
+    h6 {
+      font-size: $fsXSmall;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--textFaint);
+      margin-bottom: 1rem;
+    }
+  }
+}

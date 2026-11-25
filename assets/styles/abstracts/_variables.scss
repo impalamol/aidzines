@@ -1,0 +1,63 @@
+// ==========================================================
+// Design tokens (compile-time). Runtime theme colors live in
+// base/_themes.scss as CSS custom properties.
+// ==========================================================
+
+// Brand palette
+$ink: #000f16;
+$inkSoft: #04161f;
+$inkRaised: #072230;
+$paper: #f4f6f1;
+$paperSoft: #eaede4;
+$white: #ffffff;
+
+$lime: #c6ff3d;
+$violet: #7b61ff;
+$violetDeep: #5236e0;
+$cyan: #22d3ee;
+$coral: #ff6b4a;
+
+// Typography
+$fontSans: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+$fontSerif: "Instrument Serif", Georgia, serif;
+
+$fsXSmall: 0.75rem;
+$fsSmall: 0.875rem;
+$fsBase: 1rem;
+$fsLarge: 1.125rem;
+$fsXLarge: 1.25rem;
+
+$displayXl: clamp(2.75rem, 7.2vw, 6.75rem);
+$displayLg: clamp(2.25rem, 5.4vw, 4.75rem);
+$displayMd: clamp(1.875rem, 3.8vw, 3.25rem);
+$displaySm: clamp(1.5rem, 2.6vw, 2.25rem);
+
+// Spacing
+$unit: 1rem;
+$sectionSpace: clamp(4.5rem, 10vw, 8.5rem);
+$gutter: 1rem;
+
+// Radius
+$radiusSm: 10px;
+$radiusMd: 18px;
+$radiusLg: 28px;
+$radiusXl: 40px;
+$radiusPill: 999px;
+
+// Motion
+$easeOut: cubic-bezier(0.16, 1, 0.3, 1);
+$easeInOut: cubic-bezier(0.65, 0, 0.35, 1);
+$durFast: 0.25s;
+$durBase: 0.45s;
+$durSlow: 0.9s;
+
+// Breakpoints (mirror Bootstrap's grid)
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
+$headerHeight: 84px;

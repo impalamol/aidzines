@@ -1,0 +1,143 @@
+@use "../abstracts" as *;
+
+.contactCard {
+  @include card;
+  padding: 1.75rem;
+  height: 100%;
+  display: block;
+  color: var(--text);
+  transition: border-color $durFast ease, transform $durBase $easeOut, background $durFast ease;
+
+  .iconTile {
+    margin-bottom: 2rem;
+  }
+
+  span {
+    display: block;
+    font-size: $fsSmall;
+    color: var(--textMuted);
+  }
+
+  strong {
+    font-size: 1.1rem;
+    font-weight: 600;
+    word-break: break-word;
+  }
+
+  &:hover {
+    color: var(--text);
+    border-color: var(--borderStrong);
+    transform: translateY(-5px);
+
+    .iconTile {
+      background: var(--accent);
+      color: var(--accentInk);
+      transform: rotate(-8deg);
+    }
+  }
+}
+
+.mapPanel {
+  position: relative;
+  border-radius: $radiusLg;
+  overflow: hidden;
+  min-height: 360px;
+  height: 100%;
+  border: 1px solid var(--border);
+  background: linear-gradient(var(--gridLine) 1px, transparent 1px) 0 0 / 34px 34px,
+    linear-gradient(90deg, var(--gridLine) 1px, transparent 1px) 0 0 / 34px 34px, var(--surfaceSolid);
+
+  .mapRoads {
+    @include absFill;
+    width: 100%;
+    height: 100%;
+
+    path {
+      fill: none;
+      stroke: var(--borderStrong);
+      stroke-width: 10;
+      stroke-linecap: round;
+    }
+
+    .mapRiver {
+      stroke: var(--secondarySoft);
+      stroke-width: 26;
+    }
+  }
+
+  .mapPin {
+    position: absolute;
+    left: 52%;
+    top: 46%;
+    transform: translate(-50%, -100%);
+    @include flexCenter;
+    flex-direction: column;
+
+    .pinHead {
+      width: 54px;
+      height: 54px;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      background: var(--accent);
+      @include flexCenter;
+      box-shadow: var(--shadow);
+      animation: floatY 3s ease-in-out infinite;
+
+      .bi {
+        transform: rotate(45deg);
+        color: var(--accentInk);
+        font-size: 1.3rem;
+      }
+    }
+
+    .pinPulse {
+      width: 18px;
+      height: 6px;
+      margin-top: 10px;
+      border-radius: 50%;
+      background: var(--accentText);
+      opacity: 0.4;
+      animation: pulseDot 2s infinite;
+    }
+  }
+
+  .mapLabel {
+    position: absolute;
+    left: 1.25rem;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    @include glass;
+    border-radius: $radiusMd;
+    padding: 1rem 1.25rem;
+    @include flex(center, space-between, 1rem);
+    flex-wrap: wrap;
+
+    p {
+      margin: 0;
+      font-size: $fsSmall;
+    }
+
+    strong {
+      display: block;
+      color: var(--text);
+    }
+  }
+}
+
+.hoursList {
+  li {
+    @include flex(center, space-between, 1rem);
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95rem;
+
+    span {
+      color: var(--textMuted);
+    }
+
+    .isOpenNow {
+      color: var(--accentText);
+      font-weight: 600;
+    }
+  }
+}

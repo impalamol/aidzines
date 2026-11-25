@@ -1,0 +1,126 @@
+@use "../abstracts" as *;
+
+// ==========================================================
+// Keyframes + scroll reveal system
+// Usage: <div data-reveal="up|left|right|scale|fade" data-delay="2">
+// ==========================================================
+
+@keyframes pulseDot {
+  0%, 100% { box-shadow: 0 0 0 0 var(--accentSoft); }
+  50% { box-shadow: 0 0 0 7px var(--accentSoft); }
+}
+
+@keyframes blobFloat {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  33% { transform: translate(6%, -8%) scale(1.08) rotate(30deg); }
+  66% { transform: translate(-7%, 5%) scale(0.94) rotate(-20deg); }
+  100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+@keyframes spinSlow {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes marqueeX {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes wordIn {
+  from { transform: translateY(110%) rotate(4deg); opacity: 0; }
+  to { transform: translateY(0) rotate(0); opacity: 1; }
+}
+
+@keyframes wordOut {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-110%) rotate(-4deg); opacity: 0; }
+}
+
+@keyframes barGrow {
+  from { transform: scaleY(0.15); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to { background-position: 200% 0; }
+}
+
+@keyframes drawLine {
+  from { stroke-dashoffset: 600; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.6); opacity: 0; }
+  70% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+// Reveal (only hides when JS is available)
+.hasJs [data-reveal] {
+  opacity: 0;
+  transition: opacity $durSlow $easeOut, transform $durSlow $easeOut, filter $durSlow $easeOut;
+  transition-delay: calc(var(--revealDelay, 0) * 90ms);
+  will-change: opacity, transform;
+
+  &[data-reveal="up"] { transform: translateY(48px); }
+  &[data-reveal="down"] { transform: translateY(-40px); }
+  &[data-reveal="left"] { transform: translateX(-56px); }
+  &[data-reveal="right"] { transform: translateX(56px); }
+  &[data-reveal="scale"] { transform: scale(0.92); }
+  &[data-reveal="blur"] { filter: blur(14px); transform: translateY(20px); }
+
+  &.isRevealed {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+// Split headline (JS wraps words in .splitWord > span)
+.splitWord {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+
+  > span {
+    display: inline-block;
+    transform: translateY(105%);
+    transition: transform 1s $easeOut;
+    transition-delay: calc(var(--wordIndex, 0) * 60ms + 120ms);
+  }
+}
+
+.isRevealed .splitWord > span,
+.splitWord.isRevealed > span {
+  transform: none;
+}
+
+@include reducedMotion {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hasJs [data-reveal] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .splitWord > span {
+    transform: none;
+  }
+}

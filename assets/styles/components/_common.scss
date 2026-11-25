@@ -1,0 +1,540 @@
+@use "../abstracts" as *;
+
+// ==========================================================
+// Reusable blocks shared by multiple pages
+// ==========================================================
+
+// Gradient blobs
+.blobField {
+  @include absFill;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: var(--blobOpacity);
+  animation: blobFloat 18s ease-in-out infinite;
+
+  &.blobLime {
+    background: $lime;
+    width: 38vw;
+    height: 38vw;
+    max-width: 520px;
+    max-height: 520px;
+    top: -8%;
+    right: -6%;
+    opacity: calc(var(--blobOpacity) * 0.55);
+  }
+
+  &.blobViolet {
+    background: $violet;
+    width: 44vw;
+    height: 44vw;
+    max-width: 640px;
+    max-height: 640px;
+    top: 20%;
+    left: -14%;
+    animation-delay: -6s;
+  }
+
+  &.blobCyan {
+    background: $cyan;
+    width: 30vw;
+    height: 30vw;
+    max-width: 420px;
+    max-height: 420px;
+    bottom: -10%;
+    right: 18%;
+    opacity: calc(var(--blobOpacity) * 0.6);
+    animation-delay: -11s;
+  }
+}
+
+// Pill tag
+.tagPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.3rem 0.8rem;
+  font-size: $fsXSmall;
+  font-weight: 500;
+  border-radius: $radiusPill;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--textMuted);
+  white-space: nowrap;
+}
+
+.tagList {
+  @include flex(center, flex-start, 6px);
+  flex-wrap: wrap;
+}
+
+// Icon tile
+.iconTile {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  @include flexCenter;
+  font-size: 1.45rem;
+  background: var(--accentSoft);
+  color: var(--accentText);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  transition: transform $durBase $easeOut, background $durFast ease, color $durFast ease;
+}
+
+// Inner page hero
+.pageHero {
+  padding: calc(#{$headerHeight} + clamp(4rem, 9vw, 7rem)) 0 clamp(3rem, 6vw, 5rem);
+  overflow: hidden;
+
+  h1 {
+    font-size: $displayXl;
+    letter-spacing: -0.05em;
+    line-height: 0.98;
+    max-width: 14ch;
+  }
+
+  .leadText {
+    margin-top: 1.5rem;
+  }
+}
+
+.breadcrumbTrail {
+  @include flex(center, flex-start, 10px);
+  font-size: $fsSmall;
+  color: var(--textFaint);
+  margin-bottom: 1.5rem;
+
+  a {
+    color: var(--textMuted);
+  }
+
+  .bi {
+    font-size: 0.7rem;
+  }
+}
+
+.pageHeroMeta {
+  @include flex(flex-end, flex-end, 2.5rem);
+  height: 100%;
+
+  @include mqDown(lg) {
+    justify-content: flex-start;
+    margin-top: 2.5rem;
+  }
+}
+
+.metaStat {
+  strong {
+    display: block;
+    font-size: $displaySm;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--text);
+  }
+
+  span {
+    font-size: $fsSmall;
+    color: var(--textMuted);
+  }
+}
+
+// Marquee
+.marqueeBand {
+  position: relative;
+  padding: 1.5rem 0;
+  border-block: 1px solid var(--border);
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+
+  &.isTilted {
+    transform: rotate(-2deg);
+    margin: 2rem -2rem;
+    background: var(--accent);
+    border: 0;
+    mask-image: none;
+    -webkit-mask-image: none;
+
+    .marqueeItem {
+      color: var(--accentInk);
+
+      .bi {
+        color: var(--accentInk);
+      }
+    }
+  }
+}
+
+.marqueeTrack {
+  display: flex;
+  width: max-content;
+  animation: marqueeX var(--marqueeSpeed, 40s) linear infinite;
+
+  &.isReverse {
+    animation-direction: reverse;
+  }
+
+  .marqueeBand:hover & {
+    animation-play-state: paused;
+  }
+}
+
+.marqueeItem {
+  @include flex(center, flex-start, 1rem);
+  padding-inline: 1.75rem;
+  font-size: clamp(1.1rem, 2.2vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--textMuted);
+  white-space: nowrap;
+
+  .bi {
+    color: var(--accentText);
+    font-size: 0.8em;
+  }
+}
+
+// Stats
+.statCard {
+  @include card;
+  padding: 1.75rem;
+  height: 100%;
+  transition: transform $durBase $easeOut, border-color $durFast ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--borderStrong);
+  }
+
+  .statValue {
+    font-size: clamp(2.5rem, 5vw, 3.75rem);
+    font-weight: 600;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+
+    sup {
+      font-size: 0.45em;
+      top: -1em;
+      color: var(--accentText);
+    }
+  }
+
+  p {
+    margin: 0;
+    font-size: $fsSmall;
+  }
+}
+
+// CTA band
+.ctaBand {
+  padding-top: 0;
+}
+
+.ctaPanel {
+  position: relative;
+  overflow: hidden;
+  border-radius: $radiusXl;
+  padding: clamp(2.5rem, 7vw, 6rem) clamp(1.5rem, 6vw, 5rem);
+  background: var(--invertBg);
+  color: var(--invertText);
+  isolation: isolate;
+
+  h2 {
+    color: var(--invertText);
+    font-size: $displayLg;
+    letter-spacing: -0.05em;
+    max-width: 14ch;
+  }
+
+  p {
+    color: var(--invertText);
+    opacity: 0.7;
+    max-width: 44ch;
+  }
+
+  .btnGhost {
+    --bs-btn-color: var(--invertText);
+    --bs-btn-hover-color: var(--invertText);
+    --bs-btn-border-color: currentColor;
+    --bs-btn-hover-bg: transparent;
+    --bs-btn-hover-border-color: currentColor;
+  }
+
+  .ctaOrb {
+    position: absolute;
+    right: -10%;
+    top: -40%;
+    width: 60%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: conic-gradient(from 90deg, $lime, $cyan, $violet, $lime);
+    filter: blur(70px);
+    opacity: 0.55;
+    z-index: -1;
+    animation: spinSlow 16s linear infinite;
+  }
+
+  .ctaRing {
+    position: absolute;
+    right: 6%;
+    bottom: 10%;
+    width: 180px;
+    height: 180px;
+    z-index: -1;
+    animation: spinSlow 22s linear infinite;
+    opacity: 0.8;
+
+    text {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      fill: var(--invertText);
+    }
+
+    @include mqDown(lg) {
+      display: none;
+    }
+  }
+}
+
+.ctaContacts {
+  @include flex(center, flex-start, 2rem);
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(128, 128, 128, 0.25);
+
+  a {
+    color: var(--invertText);
+    font-weight: 500;
+    @include flex(center, flex-start, 0.5rem);
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+// Check list
+.checkList {
+  li {
+    position: relative;
+    padding-left: 1.85rem;
+    color: var(--textMuted);
+
+    & + li {
+      margin-top: 0.6rem;
+    }
+
+    &::before {
+      content: "\F26E";
+      font-family: "bootstrap-icons";
+      position: absolute;
+      left: 0;
+      top: 0.1rem;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      font-size: 0.8rem;
+      @include flexCenter;
+      background: var(--accentSoft);
+      color: var(--accentText);
+    }
+  }
+}
+
+// Testimonial
+.testimonialTrack {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(300px, 420px);
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--borderStrong) transparent;
+  cursor: grab;
+
+  &.isDragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+    user-select: none;
+  }
+
+  @include mqDown(md) {
+    grid-auto-columns: 86%;
+  }
+}
+
+.testimonialCard {
+  @include card;
+  scroll-snap-align: start;
+  padding: 2rem;
+  @include flex(stretch, space-between);
+  flex-direction: column;
+  gap: 2rem;
+  transition: border-color $durFast ease, transform $durBase $easeOut;
+
+  &:hover {
+    border-color: var(--borderStrong);
+  }
+
+  blockquote {
+    margin: 0;
+    font-size: 1.12rem;
+    line-height: 1.6;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  .ratingStars {
+    color: var(--accentText);
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+.personChip {
+  @include flex(center, flex-start, 0.85rem);
+
+  strong {
+    display: block;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  span {
+    font-size: $fsSmall;
+    color: var(--textMuted);
+  }
+}
+
+.avatarBubble {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  @include flexCenter;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: $ink;
+  flex-shrink: 0;
+  background: var(--avatarBg, #{$lime});
+}
+
+.sliderControls {
+  @include flex(center, flex-end, 10px);
+
+  button {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    @include flexCenter;
+    transition: background $durFast ease, color $durFast ease;
+
+    &:hover {
+      background: var(--accent);
+      color: var(--accentInk);
+    }
+  }
+}
+
+// Process steps
+.processGrid {
+  counter-reset: step;
+}
+
+.processStep {
+  position: relative;
+  height: 100%;
+  padding: 2rem 1.75rem;
+  border-radius: $radiusLg;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: transform $durBase $easeOut, background $durFast ease, border-color $durFast ease;
+  overflow: hidden;
+
+  .stepNumber {
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.06em;
+    -webkit-text-stroke: 1px var(--borderStrong);
+    color: transparent;
+    margin-bottom: 2.5rem;
+    transition: color $durBase ease, -webkit-text-stroke-color $durBase ease;
+  }
+
+  h4 {
+    font-size: 1.35rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .stepDuration {
+    position: absolute;
+    top: 1.75rem;
+    right: 1.75rem;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: var(--borderStrong);
+
+    .stepNumber {
+      color: var(--accentText);
+      -webkit-text-stroke-color: transparent;
+    }
+  }
+}
+
+// Spotlight hover (JS sets --spotX / --spotY)
+[data-spotlight] {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(420px circle at var(--spotX, 50%) var(--spotY, 50%), var(--accentSoft), transparent 45%);
+    opacity: 0;
+    transition: opacity $durBase ease;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+// Tilt (JS sets --rx/--ry)
+[data-tilt] {
+  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.2s ease-out;
+  transform-style: preserve-3d;
+}
+
+.ctaPanel .btnGroupInline,
+.drawerContent .btnGroupInline {
+  margin-top: 2rem;
+}

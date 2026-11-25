@@ -1,0 +1,31 @@
+// ==========================================================
+// aiDzines — main stylesheet
+// Compile: npx sass assets/styles/styles.scss assets/styles/styles.css
+// (or Live Sass Compiler in VS Code). Fonts load via <link> in each page head.
+// ==========================================================
+
+
+// Base
+@use "base/themes";
+@use "base/base";
+@use "base/typography";
+@use "base/animations";
+
+// Components
+@use "components/buttons";
+@use "components/navbar";
+@use "components/footer";
+@use "components/common";
+@use "components/accordion";
+@use "components/forms";
+@use "components/mockups";
+@use "components/layout";
+
+// Pages
+@use "pages/home";
+@use "pages/services";
+@use "pages/portfolio";
+@use "pages/about";
+@use "pages/careers";
+@use "pages/enquiry";
+@use "pages/contact";

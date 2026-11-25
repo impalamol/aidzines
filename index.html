@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>aiDzines — Web Design, Development & Digital Growth Studio</title>
+  <meta name="description" content="aiDzines is a design-led digital studio offering web design, development, UI/UX, mobile apps, SEO and digital marketing. Established 2024." />
+  <meta name="theme-color" content="#000f16" />
+  <meta property="og:title" content="aiDzines — Web Design, Development & Digital Growth Studio" />
+  <meta property="og:description" content="aiDzines is a design-led digital studio offering web design, development, UI/UX, mobile apps, SEO and digital marketing. Established 2024." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%229%22%20fill%3D%22%23c6ff3d%22%2F%3E%3Cpath%20fill%3D%22%23000f16%22%20d%3D%22M14.5%205c.9%206.6%203.2%208.9%209.8%209.8-6.6.9-8.9%203.2-9.8%209.8-.9-6.6-3.2-8.9-9.8-9.8%206.6-.9%208.9-3.2%209.8-9.8z%22%2F%3E%3Ccircle%20cx%3D%2225%22%20cy%3D%2225%22%20r%3D%222.8%22%20fill%3D%22%23000f16%22%2F%3E%3C%2Fsvg%3E" />
+  <script>
+    document.documentElement.classList.add("hasJs");
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles/styles.css" />
+</head>
+
+<body>
+  <a class="skipLink" href="#main">Skip to content</a>
+  <div class="scrollProgress" aria-hidden="true"></div>
+  <div class="pageBackdrop" aria-hidden="true"></div>
+  <div class="noiseLayer" aria-hidden="true"></div>
+  <div class="cursorGlow" aria-hidden="true"></div>
+
+  <header class="siteHeader">
+    <nav class="navbar navbar-expand-lg mainNav" aria-label="Main navigation">
+      <div class="container">
+        <div class="navShell">
+          <a class="navbar-brand brandLogo" href="index.html" aria-label="aiDzines home">
+            <span class="brandMark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 2.5c.7 5.2 2.5 7 7.7 7.7-5.2.7-7 2.5-7.7 7.7-.7-5.2-2.5-7-7.7-7.7 5.2-.7 7-2.5 7.7-7.7z"/><circle cx="19" cy="19" r="2.4" fill="currentColor"/></svg></span>
+            <span class="brandWord"><b>ai</b>Dzines</span>
+          </a>
+          <div class="navMobileTools">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavMenu"
+              aria-controls="mainNavMenu" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="togglerLine"></span><span class="togglerLine"></span><span class="togglerLine"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="mainNavMenu">
+            <ul class="navbar-nav">
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+              <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+              <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+              <li class="nav-item"><a class="nav-link" href="careers.html">Careers</a></li>
+              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+            <div class="navActions">
+              <a href="enquiry.html" class="btn btnPrimary btnSmall"><span class="btnLabel" data-text="Start a project"><span>Start a project</span></span><span class="btnIcon"><i class="bi bi-arrow-up-right"></i></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ================= HERO ================= -->
+    <section class="heroSection">
+      <div class="blobField" aria-hidden="true">
+        <span class="blob blobLime"></span>
+        <span class="blob blobViolet"></span>
+        <span class="blob blobCyan"></span>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="heroBadge" data-reveal="down">
+              <span class="badgeTag">New</span>
+              <span class="liveDot"></span>
+              Now booking projects for early 2027
+            </div>
+            <h1 class="heroTitle" data-split>
+              We craft digital
+              <span class="wordRotator">
+                <span class="rotatorWord isActive">websites</span>
+                <span class="rotatorWord">apps</span>
+                <span class="rotatorWord">brands</span>
+                <span class="rotatorWord">growth</span>
+              </span>
+              <br />that people <span class="serifItalic">love.</span>
+            </h1>
+            <p class="leadText heroLead" data-reveal="up" data-delay="3">
+              aiDzines is a design-led studio for web design &amp; development, UI/UX, mobile apps, SEO and
+              digital marketing. One team, from first sketch to measurable growth.
+            </p>
+            <div class="btnGroupInline" data-reveal="up" data-delay="4">
+              <span data-magnetic><a href="enquiry.html" class="btn btnPrimary btnLarge"><span class="btnLabel" data-text="Start a project"><span>Start a project</span></span><span class="btnIcon"><i class="bi bi-arrow-up-right"></i></span></a></span>
+              <a href="portfolio.html" class="btn btnGhost btnLarge"><span class="btnLabel" data-text="See our work"><span>See our work</span></span><span class="btnIcon"><i class="bi bi-arrow-up-right"></i></span></a>
+            </div>
+            <div class="heroProof" data-reveal="up" data-delay="5">
+              <div class="avatarStack" aria-hidden="true">
+                <span class="avatarBubble" style="--avatarBg:#c6ff3d">AR</span>
+                <span class="avatarBubble" style="--avatarBg:#a99bff">MK</span>
+                <span class="avatarBubble" style="--avatarBg:#7ee7f7">SL</span>
+                <span class="avatarBubble" style="--avatarBg:#ffb199">JD</span>
+              </div>
+              <p><strong>4.9/5 from 40+ clients</strong><br />across 9 countries since 2024</p>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="heroVisual" data-reveal="scale" data-delay="3" aria-hidden="true">
+              <div class="heroLayer heroDashboard" data-depth="0.4">
+                <div class="heroCard">
+                  <div class="dashHead">
+                    <strong>Growth overview</strong>
+                    <span class="tagPill"><i class="bi bi-calendar3"></i> Last 30 days</span>
+                  </div>
+                  <div class="dashKpis">
+                    <div><span>Visitors</span><b>48.2k</b><em>+32%</em></div>
+                    <div><span>Leads</span><b>1,284</b><em>+61%</em></div>
+                    <div><span>CVR</span><b>4.8%</b><em>+1.9</em></div>
+                  </div>
+                  <div class="dashChart">
+                    <i style="--h:34%;--i:0"></i><i style="--h:48%;--i:1"></i><i style="--h:40%;--i:2"></i>
+                    <i style="--h:62%;--i:3"></i><i style="--h:55%;--i:4"></i><i style="--h:72%;--i:5"></i>
+                    <i style="--h:66%;--i:6"></i><i style="--h:84%;--i:7"></i><i class="isPeak" style="--h:100%;--i:8"></i>
+                    <i style="--h:78%;--i:9"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="heroLayer heroPhone" data-depth="1">
+                <div class="phoneScreen">
+                  <small>Total balance</small>
+                  <div class="phoneBalance">₹2,45,600</div>
+                  <div class="phoneRing"></div>
+                  <div class="phoneRow"></div>
+                  <div class="phoneRow"></div>
+                  <div class="phoneRow"></div>
+                </div>
+              </div>
+              <div class="heroLayer heroChipGrowth" data-depth="1.4">
+                <div class="floatInner heroCard heroChip">
+                  <span class="chipIcon"><i class="bi bi-graph-up-arrow"></i></span>
+                  <span>+148% organic traffic<small>SEO · 6 months</small></span>
+                </div>
+              </div>
+              <div class="heroLayer heroChipCode" data-depth="0.8">
+                <div class="floatInner heroCard heroChip">
+                  <span class="chipIcon"><i class="bi bi-code-slash"></i></span>
+                  <span>&lt;Figma → React /&gt;</span>
+                </div>
+              </div>
+              <div class="heroLayer heroOrbit" data-depth="0.6"></div>
+            </div>
+          </div>
+        </div>
+        <div class="heroScrollHint" data-reveal="fade" data-delay="6">
+          <span class="mouseIcon"></span> Scroll to explore
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MARQUEE ================= -->
+    <div class="marqueeBand" aria-label="Our capabilities">
+      <div class="marqueeTrack" style="--marqueeSpeed:45s">
+        <span class="marqueeItem"><i class="bi bi-asterisk"></i>Web Design</span>
+        <span class="marqueeItem"><i class="bi bi-asterisk"></i>Web Development</span>
+        <span class="marqueeItem"><i class="bi bi-asterisk"></i>UI / UX Design</span>
+        <span class="marqueeItem"><i class="bi bi-asterisk"></i>Mobile Apps</span>
+        <span class="marqueeItem"><i class="bi bi-asterisk"></i>SEO</span>
+        <span class="marqueeItem"><i class="bi bi-asterisk"></i>Digital Marketing</span>
+        <span class="marqueeItem"><i class="bi bi-asterisk"></i>Branding</span>
+        <span class="marqueeItem"><i class="bi bi-asterisk"></i>E-commerce</span>
+        <span class="marqueeItem" aria-hidden="true"><i class="bi bi-asterisk"></i>Web Design</span>
+        <span class="marqueeItem" aria-hidden="true"><i class="bi bi-asterisk"></i>Web Development</span>
+        <span class="marqueeItem" aria-hidden="true"><i class="bi bi-asterisk"></i>UI / UX Design</span>
+        <span class="marqueeItem" aria-hidden="true"><i class="bi bi-asterisk"></i>Mobile Apps</span>
+        <span class="marqueeItem" aria-hidden="true"><i class="bi bi-asterisk"></i>SEO</span>
+        <span class="marqueeItem" aria-hidden="true"><i class="bi bi-asterisk"></i>Digital Marketing</span>
+        <span class="marqueeItem" aria-hidden="true"><i class="bi bi-asterisk"></i>Branding</span>
+        <span class="marqueeItem" aria-hidden="true"><i class="bi bi-asterisk"></i>E-commerce</span>
+      </div>
+    </div>
+
+    <!-- ================= SERVICES ================= -->
+    <section class="servicesPreview" id="services">
+      <div class="container">
+        <div class="sectionHead isSplit">
+          <div>
+            <span class="eyebrow" data-reveal="up">What we do</span>
+            <h2 data-split>Everything your brand needs to <span class="serifItalic">grow online.</span></h2>
+          </div>
+          <p data-reveal="up" data-delay="2">Strategy, design, engineering and marketing under one roof — so your
+            product looks great, works flawlessly and actually gets found.</p>
+        </div>
+
+        <div class="bentoGrid">
+          <a href="services.html#webDesign" class="bentoCard isWide isFeatured" data-reveal="up" data-spotlight>
+            <div class="bentoTop">
+              <span class="iconTile"><i class="bi bi-palette2"></i></span>
+              <span class="bentoArrow"><i class="bi bi-arrow-up-right"></i></span>
+            </div>
+            <div>
+              <span class="bentoIndex">01</span>
+              <h3>Web Design</h3>
+              <p>Conversion-focused websites with bold art direction, motion and a design system that scales with your
+                business.</p>
+            </div>
+            <div class="bentoPreview">
+              <span class="tagPill">Landing pages</span><span class="tagPill">Corporate sites</span>
+              <span class="tagPill">Design systems</span><span class="tagPill">Webflow</span>
+            </div>
+          </a>
+          <a href="services.html#webDevelopment" class="bentoCard" data-reveal="up" data-delay="1" data-spotlight>
+            <div class="bentoTop">
+              <span class="iconTile"><i class="bi bi-code-square"></i></span>
+              <span class="bentoArrow"><i class="bi bi-arrow-up-right"></i></span>
+            </div>
+            <div>
+              <span class="bentoIndex">02</span>
+              <h3>Web Development</h3>
+              <p>Fast, secure, SEO-ready builds — from marketing sites to complex web apps.</p>
+            </div>
+          </a>
+          <a href="services.html#uiUx" class="bentoCard" data-reveal="up" data-spotlight>
+            <div class="bentoTop">
+              <span class="iconTile"><i class="bi bi-vector-pen"></i></span>
+              <span class="bentoArrow"><i class="bi bi-arrow-up-right"></i></span>
+            </div>
+            <div>
+              <span class="bentoIndex">03</span>
+              <h3>UI / UX Design</h3>
+              <p>Research-backed product design, wireframes and high-fidelity prototypes.</p>
+            </div>
+          </a>
+          <a href="services.html#mobileApps" class="bentoCard" data-reveal="up" data-delay="1" data-spotlight>
+            <div class="bentoTop">
+              <span class="iconTile"><i class="bi bi-phone"></i></span>
+              <span class="bentoArrow"><i class="bi bi-arrow-up-right"></i></span>
+            </div>
+            <div>
+              <span class="bentoIndex">04</span>
+              <h3>Mobile Apps</h3>
+              <p>Native-feel iOS &amp; Android apps with Flutter and React Native.</p>
+            </div>
+          </a>
+          <a href="services.html#seo" class="bentoCard" data-reveal="up" data-delay="2" data-spotlight>
+            <div class="bentoTop">
+              <span class="iconTile"><i class="bi bi-search"></i></span>
+              <span class="bentoArrow"><i class="bi bi-arrow-up-right"></i></span>
+            </div>
+            <div>
+              <span class="bentoIndex">05</span>
+              <h3>SEO</h3>
+              <p>Technical, on-page and content SEO that compounds month after month.</p>
+            </div>
+          </a>
+          <a href="services.html#digitalMarketing" class="bentoCard isWide" data-reveal="up" data-spotlight>
+            <div class="bentoTop">
+              <span class="iconTile"><i class="bi bi-megaphone"></i></span>
+              <span class="bentoArrow"><i class="bi bi-arrow-up-right"></i></span>
+            </div>
+            <div>
+              <span class="bentoIndex">06</span>
+              <h3>Digital Marketing</h3>
+              <p>Performance campaigns, social media and content that turn attention into revenue — tracked down to
+                every click.</p>
+            </div>
+            <div class="bentoPreview">
+              <span class="tagPill">Google Ads</span><span class="tagPill">Meta Ads</span>
+              <span class="tagPill">Social media</span><span class="tagPill">Email automation</span>
+            </div>
+          </a>
+          <a href="services.html#branding" class="bentoCard" data-reveal="up" data-delay="1" data-spotlight>
+            <div class="bentoTop">
+              <span class="iconTile"><i class="bi bi-gem"></i></span>
+              <span class="bentoArrow"><i class="bi bi-arrow-up-right"></i></span>
+            </div>
+            <div>
+              <span class="bentoIndex">07</span>
+              <h3>Branding</h3>
+              <p>Logos, identity systems and brand guidelines with personality.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="aboutSplit">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <span class="eyebrow" data-reveal="up">Who we are</span>
+            <p class="aboutStatement">
+              Founded in 2024, aiDzines is a young, hungry team of designers, engineers and marketers. We pair
+              <span class="serifItalic">craft</span> with data to build digital products that look stunning, load
+              fast and grow your business.
+            </p>
+            <div class="row">
+              <div class="col-6 col-md-6" data-reveal="up">
+                <div class="statCard">
+                  <div class="statValue"><span data-count="60">60</span><sup>+</sup></div>
+                  <p>Projects launched since 2024</p>
+                </div>
+              </div>
+              <div class="col-6 col-md-6" data-reveal="up" data-delay="1">
+                <div class="statCard">
+                  <div class="statValue"><span data-count="4.9">4.9</span><sup>★</sup></div>
+                  <p>Average client rating</p>
+                </div>
+              </div>
+            </div>
+            <div class="aboutLinkRow" data-reveal="up" data-delay="2">
+              <a href="about.html" class="arrowLink">More about our studio <i class="bi bi-arrow-up-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="aboutVisual" data-reveal="right" data-tilt>
+              <div class="aboutSticker"><b>2024</b>est.</div>
+              <div class="aboutBadge">
+                <div><strong><span data-count="98">98</span>%</strong><br /><span>Client retention rate</span></div>
+                <i class="bi bi-hearts" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROCESS ================= -->
+    <section class="processSection">
+      <div class="container">
+        <div class="sectionHead isCentered">
+          <span class="eyebrow" data-reveal="up">How we work</span>
+          <h2 data-split>A simple process, <span class="serifItalic">zero guesswork.</span></h2>
+          <p data-reveal="up" data-delay="2">Clear milestones, weekly demos and one shared workspace — you always know
+            what's happening and what's next.</p>
+        </div>
+        <div class="row processGrid">
+          <div class="col-md-6 col-lg-3 processCol" data-reveal="up">
+            <div class="processStep">
+              <span class="tagPill stepDuration">Week 1</span>
+              <div class="stepNumber">01</div>
+              <h4>Discover</h4>
+              <p>Workshops, research and competitor audits to define goals, users and success metrics.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 processCol" data-reveal="up" data-delay="1">
+            <div class="processStep">
+              <span class="tagPill stepDuration">Week 2–3</span>
+              <div class="stepNumber">02</div>
+              <h4>Design</h4>
+              <p>Wireframes, visual direction and clickable prototypes you can test before a line of code.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 processCol" data-reveal="up" data-delay="2">
+            <div class="processStep">
+              <span class="tagPill stepDuration">Week 4–8</span>
+              <div class="stepNumber">03</div>
+              <h4>Develop</h4>
+              <p>Pixel-perfect, accessible builds with QA on real devices and weekly progress demos.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 processCol" data-reveal="up" data-delay="3">
+            <div class="processStep">
+              <span class="tagPill stepDuration">Ongoing</span>
+              <div class="stepNumber">04</div>
+              <h4>Launch &amp; Grow</h4>
+              <p>Go-live, analytics, SEO and campaigns — then we iterate on real data.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= WORK ================= -->
+    <section class="workSection">
+      <div class="container">
+        <div class="sectionHead isSplit">
+          <div>
+            <span class="eyebrow" data-reveal="up">Selected work</span>
+            <h2 data-split>Recent projects we're <span class="serifItalic">proud of.</span></h2>
+          </div>
+          <div data-reveal="up" data-delay="2">
+            <p>A glimpse of the products, platforms and brands we've helped launch and grow.</p>
+            <a href="portfolio.html" class="arrowLink">View full portfolio <i class="bi bi-arrow-up-right"></i></a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <a href="portfolio.html" class="workCard" data-reveal="up">
+              <div class="projectVisual isTall" style="--c1:#7b61ff;--c2:#22d3ee">
+                <span class="mockBadge"><i class="bi bi-star-fill"></i> 4.8 App Store</span>
+                <div class="mockPhone isSolo">
+                  <div class="mockScreen">
+                    <span class="mockLine" style="--w:50%"></span>
+                    <span class="mockLine isThick" style="--w:80%"></span>
+                    <span class="mockBlock" style="--ratio:1.3"></span>
+                    <div class="mockRow" style="--cols:2"><span class="mockBlock"></span><span class="mockBlock"></span></div>
+                    <span class="mockLine" style="--w:70%"></span>
+                  </div>
+                </div>
+                <span class="workHoverCta">View case</span>
+              </div>
+              <div class="workMeta">
+                <div>
+                  <h3>Lumora Finance</h3>
+                  <p>Mobile banking app · UI/UX · Flutter</p>
+                </div>
+                <span class="workYear">2026</span>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6">
+            <a href="portfolio.html" class="workCard isOffset" data-reveal="up" data-delay="2">
+              <div class="projectVisual" style="--c1:#ff6b4a;--c2:#ffc857">
+                <div class="mockBrowser isLight">
+                  <div class="mockBar"><i></i><i></i><i></i><span class="mockUrl"></span></div>
+                  <div class="mockBody">
+                    <span class="mockLine isAccent" style="--w:45%"></span>
+                    <span class="mockLine" style="--w:75%"></span>
+                    <div class="mockRow"><span class="mockBlock isFilled"></span><span class="mockBlock"></span><span class="mockBlock"></span></div>
+                  </div>
+                </div>
+                <span class="workHoverCta">View case</span>
+              </div>
+              <div class="workMeta">
+                <div>
+                  <h3>Northwind Coffee Co.</h3>
+                  <p>E-commerce website · Shopify · SEO</p>
+                </div>
+                <span class="workYear">2025</span>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6">
+            <a href="portfolio.html" class="workCard" data-reveal="up">
+              <div class="projectVisual" style="--c1:#0ea5e9;--c2:#c6ff3d">
+                <div class="mockGraph">
+                  <div class="mockKpi">+212% <small>organic</small></div>
+                  <svg viewBox="0 0 300 100" aria-hidden="true">
+                    <path class="graphArea" d="M0 90 L40 80 L80 84 L120 62 L160 66 L200 40 L240 34 L300 8 L300 100 L0 100Z" />
+                    <path class="graphLine" d="M0 90 L40 80 L80 84 L120 62 L160 66 L200 40 L240 34 L300 8" />
+                  </svg>
+                </div>
+                <span class="workHoverCta">View case</span>
+              </div>
+              <div class="workMeta">
+                <div>
+                  <h3>Verdant Realty</h3>
+                  <p>Real-estate platform · SEO · Content</p>
+                </div>
+                <span class="workYear">2025</span>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6">
+            <a href="portfolio.html" class="workCard isOffset" data-reveal="up" data-delay="2">
+              <div class="projectVisual isTall" style="--c1:#c6ff3d;--c2:#7b61ff">
+                <div class="mockBrandMark">kf.</div>
+                <div class="mockSwatches"><i style="--sw:#c6ff3d"></i><i style="--sw:#7b61ff"></i><i style="--sw:#000f16"></i><i style="--sw:#f4f6f1"></i></div>
+                <span class="workHoverCta">View case</span>
+              </div>
+              <div class="workMeta">
+                <div>
+                  <h3>Kinfolk Studio</h3>
+                  <p>Brand identity · Guidelines · Website</p>
+                </div>
+                <span class="workYear">2024</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TESTIMONIALS ================= -->
+    <section class="testimonialSection" data-slider>
+      <div class="container">
+        <div class="sectionHead isSplit">
+          <div>
+            <span class="eyebrow" data-reveal="up">Kind words</span>
+            <h2 data-split>Clients who <span class="serifItalic">keep coming back.</span></h2>
+          </div>
+          <div class="sliderControls" data-reveal="up" data-delay="2">
+            <button type="button" data-slide="prev" aria-label="Previous testimonial"><i class="bi bi-arrow-left"></i></button>
+            <button type="button" data-slide="next" aria-label="Next testimonial"><i class="bi bi-arrow-right"></i></button>
+          </div>
+        </div>
+        <div class="testimonialTrack" data-reveal="up">
+          <figure class="testimonialCard">
+            <div>
+              <div class="ratingStars" aria-label="5 out of 5 stars">★★★★★</div>
+              <blockquote>"aiDzines rebuilt our store in six weeks. Page speed doubled and online sales are up 64% quarter
+                on quarter. They feel like part of our team."</blockquote>
+            </div>
+            <figcaption class="personChip">
+              <span class="avatarBubble" style="--avatarBg:#ffb199">EH</span>
+              <span><strong>Emma Hart</strong><span>Founder, Northwind Coffee Co.</span></span>
+            </figcaption>
+          </figure>
+          <figure class="testimonialCard">
+            <div>
+              <div class="ratingStars" aria-label="5 out of 5 stars">★★★★★</div>
+              <blockquote>"The UX research changed how we think about our product. The app they designed is the
+                cleanest fintech experience I've used."</blockquote>
+            </div>
+            <figcaption class="personChip">
+              <span class="avatarBubble" style="--avatarBg:#a99bff">RK</span>
+              <span><strong>Rohan Kapoor</strong><span>CPO, Lumora Finance</span></span>
+            </figcaption>
+          </figure>
+          <figure class="testimonialCard">
+            <div>
+              <div class="ratingStars" aria-label="5 out of 5 stars">★★★★★</div>
+              <blockquote>"Our organic traffic tripled in eight months. Clear reporting, no fluff — just consistent
+                growth we can see in the pipeline."</blockquote>
+            </div>
+            <figcaption class="personChip">
+              <span class="avatarBubble" style="--avatarBg:#7ee7f7">ML</span>
+              <span><strong>Marcus Lee</strong><span>Marketing Lead, Verdant Realty</span></span>
+            </figcaption>
+          </figure>
+          <figure class="testimonialCard">
+            <div>
+              <div class="ratingStars" aria-label="5 out of 5 stars">★★★★★</div>
+              <blockquote>"From logo to launch in one smooth process. They nailed our personality and gave us a brand
+                we're genuinely proud of."</blockquote>
+            </div>
+            <figcaption class="personChip">
+              <span class="avatarBubble" style="--avatarBg:#c6ff3d">SN</span>
+              <span><strong>Sofia Novak</strong><span>Creative Director, Kinfolk Studio</span></span>
+            </figcaption>
+          </figure>
+          <figure class="testimonialCard">
+            <div>
+              <div class="ratingStars" aria-label="5 out of 5 stars">★★★★★</div>
+              <blockquote>"Responsive, transparent and fast. Weekly demos meant zero surprises at launch — rare for an
+                agency."</blockquote>
+            </div>
+            <figcaption class="personChip">
+              <span class="avatarBubble" style="--avatarBg:#ffd36e">DA</span>
+              <span><strong>Daniel Adeyemi</strong><span>CEO, Orbit Analytics</span></span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= INDUSTRIES ================= -->
+    <section class="industrySection">
+      <div class="container">
+        <div class="sectionHead isCentered">
+          <span class="eyebrow" data-reveal="up">Industries</span>
+          <h2 data-split>Built for brands of <span class="serifItalic">every shape.</span></h2>
+        </div>
+        <div class="industryCloud" data-reveal="up">
+          <span class="tagPill"><i class="bi bi-bank"></i> Fintech</span>
+          <span class="tagPill"><i class="bi bi-bag"></i> E-commerce</span>
+          <span class="tagPill"><i class="bi bi-heart-pulse"></i> Healthcare</span>
+          <span class="tagPill"><i class="bi bi-house-door"></i> Real estate</span>
+          <span class="tagPill"><i class="bi bi-mortarboard"></i> Education</span>
+          <span class="tagPill"><i class="bi bi-cup-hot"></i> Food &amp; beverage</span>
+          <span class="tagPill"><i class="bi bi-cloud"></i> SaaS</span>
+          <span class="tagPill"><i class="bi bi-airplane"></i> Travel</span>
+          <span class="tagPill"><i class="bi bi-lightning-charge"></i> Startups</span>
+          <span class="tagPill"><i class="bi bi-activity"></i> Fitness</span>
+          <span class="tagPill"><i class="bi bi-building"></i> Professional services</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section class="faqSection">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5">
+            <div class="faqAside">
+              <span class="eyebrow" data-reveal="up">FAQ</span>
+              <h2 data-split>Questions? <span class="serifItalic">Answers.</span></h2>
+              <p data-reveal="up" data-delay="2">Everything you need to know before we start working together.</p>
+              <div class="faqHelp" data-reveal="up" data-delay="3">
+                <span class="iconTile"><i class="bi bi-chat-dots"></i></span>
+                <p><strong>Still have questions?</strong>Drop us a line at <a href="mailto:hello@aidzines.com">hello@aidzines.com</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="accordion faqAccordion" id="homeFaq" data-reveal="up">
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne" aria-expanded="true" aria-controls="faqOne">
+                    <span class="faqIndex">01</span> How much does a website cost?
+                  </button>
+                </h3>
+                <div id="faqOne" class="accordion-collapse collapse show" data-bs-parent="#homeFaq">
+                  <div class="accordion-body">
+                    <p>Most marketing websites range from ₹25,000 to ₹2,50,000 depending on pages, features and content. Web apps
+                      and mobile apps are scoped individually. You'll get a fixed, itemised quote after a free discovery
+                      call.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo" aria-expanded="false" aria-controls="faqTwo">
+                    <span class="faqIndex">02</span> How long does a typical project take?
+                  </button>
+                </h3>
+                <div id="faqTwo" class="accordion-collapse collapse" data-bs-parent="#homeFaq">
+                  <div class="accordion-body">
+                    <p>A landing page takes 1–2 weeks, a full website 4–8 weeks and a mobile app MVP 8–14 weeks. We share
+                      a detailed timeline with milestones before kickoff.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree" aria-expanded="false" aria-controls="faqThree">
+                    <span class="faqIndex">03</span> Do you work with startups and small businesses?
+                  </button>
+                </h3>
+                <div id="faqThree" class="accordion-collapse collapse" data-bs-parent="#homeFaq">
+                  <div class="accordion-body">
+                    <p>Absolutely — we were a startup ourselves in 2024. We offer lean MVP packages and phased roadmaps
+                      so you can launch quickly and scale as you grow.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFour" aria-expanded="false" aria-controls="faqFour">
+                    <span class="faqIndex">04</span> Will I be able to update the website myself?
+                  </button>
+                </h3>
+                <div id="faqFour" class="accordion-collapse collapse" data-bs-parent="#homeFaq">
+                  <div class="accordion-body">
+                    <p>Yes. We build on easy-to-use CMS platforms (WordPress, Webflow, Shopify or a headless CMS) and
+                      include a recorded walkthrough plus documentation at handover.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFive" aria-expanded="false" aria-controls="faqFive">
+                    <span class="faqIndex">05</span> Do you offer support after launch?
+                  </button>
+                </h3>
+                <div id="faqFive" class="accordion-collapse collapse" data-bs-parent="#homeFaq">
+                  <div class="accordion-body">
+                    <p>Every project includes 30 days of free support. After that, flexible care plans cover updates,
+                      security, backups, performance monitoring and ongoing SEO.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="ctaBand">
+      <div class="container">
+        <div class="ctaPanel" data-reveal="scale">
+          <div class="ctaOrb" aria-hidden="true"></div>
+          <svg class="ctaRing" viewBox="0 0 200 200" aria-hidden="true">
+            <defs><path id="ctaCircle" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0" /></defs>
+            <text><textPath href="#ctaCircle">Let's build · Let's grow · Let's launch · </textPath></text>
+          </svg>
+          <span class="eyebrow">Have a project in mind?</span>
+          <h2>Let's make something <span class="serifItalic">remarkable.</span></h2>
+          <p>Tell us about your idea. We'll reply within one business day with next steps and a rough estimate.</p>
+          <div class="btnGroupInline">
+            <span data-magnetic><a href="enquiry.html" class="btn btnPrimary btnLarge"><span class="btnLabel" data-text="Start a project"><span>Start a project</span></span><span class="btnIcon"><i class="bi bi-arrow-up-right"></i></span></a></span>
+            <a href="contact.html" class="btn btnGhost btnLarge"><span class="btnLabel" data-text="Book a call"><span>Book a call</span></span><span class="btnIcon"><i class="bi bi-arrow-up-right"></i></span></a>
+          </div>
+          <div class="ctaContacts">
+            <a href="mailto:hello@aidzines.com"><i class="bi bi-envelope"></i> hello@aidzines.com</a>
+            <a href="tel:+15550142024"><i class="bi bi-telephone"></i> +1 (555) 014-2024</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  <footer class="siteFooter">
+    <div class="container">
+      <div class="footerTop">
+        <div class="row">
+          <div class="col-lg-6">
+            <h3>Fresh ideas on design, code &amp; growth. <span class="serifItalic accentText">Monthly.</span></h3>
+          </div>
+          <div class="col-lg-6">
+            <form class="footerNewsletter" novalidate>
+              <label for="newsletterEmail" class="srOnly">Email address</label>
+              <input id="newsletterEmail" type="email" placeholder="you@company.com" autocomplete="email" />
+              <button type="submit" class="btn btnPrimary btnSmall"><span class="btnLabel" data-text="Subscribe"><span>Subscribe</span></span><span class="btnIcon"><i class="bi bi-arrow-right"></i></span></button>
+            </form>
+            <p class="footerNote">One email a month. No spam, unsubscribe anytime.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footerLinks">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 footerAbout">
+            <a class="brandLogo" href="index.html" aria-label="aiDzines home">
+              <span class="brandMark"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 2.5c.7 5.2 2.5 7 7.7 7.7-5.2.7-7 2.5-7.7 7.7-.7-5.2-2.5-7-7.7-7.7 5.2-.7 7-2.5 7.7-7.7z"/><circle cx="19" cy="19" r="2.4" fill="currentColor"/></svg></span>
+              <span class="brandWord"><b>ai</b>Dzines</span>
+            </a>
+            <p>A design-led digital studio crafting websites, apps and growth engines for ambitious brands. Est. 2024.</p>
+            <div class="socialList">
+              <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+              <a href="#" aria-label="Dribbble"><i class="bi bi-dribbble"></i></a>
+              <a href="#" aria-label="Behance"><i class="bi bi-behance"></i></a>
+              <a href="#" aria-label="X (Twitter)"><i class="bi bi-twitter-x"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 col-6">
+            <h6>Services</h6>
+            <ul>
+              <li><a href="services.html#webDesign">Web Design</a></li>
+              <li><a href="services.html#webDevelopment">Web Development</a></li>
+              <li><a href="services.html#uiUx">UI / UX Design</a></li>
+              <li><a href="services.html#mobileApps">Mobile Apps</a></li>
+              <li><a href="services.html#seo">SEO</a></li>
+              <li><a href="services.html#digitalMarketing">Digital Marketing</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-6 col-6">
+            <h6>Studio</h6>
+            <ul>
+              <li><a href="about.html">About us</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="careers.html">Careers</a></li>
+              <li><a href="enquiry.html">Start a project</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <h6>Say hello</h6>
+            <ul>
+              <li><a href="mailto:hello@aidzines.com">hello@aidzines.com</a></li>
+              <li><a href="tel:+15550142024">+1 (555) 014-2024</a></li>
+              <li><span class="footerPlain">Remote-first · Working with clients worldwide</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footerWordmark" aria-hidden="true">aiDzines</div>
+
+    <div class="container">
+      <div class="footerBottom">
+        <p>&copy; <span data-year>2026</span> aiDzines. All rights reserved.</p>
+        <div class="footerLegal">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsappFab" href="https://wa.me/15550142024?text=Hi%20aiDzines%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+    <i class="bi bi-whatsapp"></i><span class="fabLabel">Chat with us</span>
+  </a>
+  <button class="backToTop" type="button" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>

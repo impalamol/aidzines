@@ -1,0 +1,121 @@
+@use "../abstracts" as *;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $fontSans;
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin: 0 0 $unit;
+}
+
+h1 {
+  font-size: $displayLg;
+}
+h2 {
+  font-size: $displayMd;
+}
+h3 {
+  font-size: $displaySm;
+}
+h4 {
+  font-size: 1.5rem;
+}
+h5 {
+  font-size: 1.25rem;
+}
+h6 {
+  font-size: 1.05rem;
+}
+
+p {
+  margin: 0 0 $unit;
+  color: var(--textMuted);
+}
+
+.serifItalic {
+  font-family: $fontSerif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.gradientText {
+  @include gradientText;
+}
+
+.accentText {
+  color: var(--accentText);
+}
+
+.leadText {
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--textMuted);
+  max-width: 60ch;
+}
+
+.eyebrow {
+  @include flex(center, flex-start, 10px);
+  display: inline-flex;
+  font-size: $fsXSmall;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--textMuted);
+  margin-bottom: 1.25rem;
+
+  &::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--accentSoft);
+    animation: pulseDot 2.4s ease-in-out infinite;
+  }
+}
+
+// Section heading block
+.sectionHead {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+
+  h2 {
+    max-width: 18ch;
+  }
+
+  p {
+    max-width: 52ch;
+  }
+
+  &.isCentered {
+    text-align: center;
+
+    h2,
+    p {
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      justify-content: center;
+    }
+  }
+
+  &.isSplit {
+    @include mqUp(lg) {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      align-items: end;
+      gap: 3rem;
+
+      p {
+        margin-bottom: 0.6rem;
+      }
+    }
+  }
+}

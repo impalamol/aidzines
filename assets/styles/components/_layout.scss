@@ -1,0 +1,102 @@
+@use "../abstracts" as *;
+
+// ==========================================================
+// Section-level spacing hooks used across pages
+// ==========================================================
+
+// Grid columns that stack on small screens need vertical rhythm
+.processCol,
+.valueCol,
+.perkCol,
+.contactCol,
+.modelCol,
+.statCol {
+  margin-bottom: 1.5rem;
+}
+
+.aboutSplit .statCard {
+  margin-bottom: 1.5rem;
+}
+
+.aboutLinkRow {
+  margin-top: 0.5rem;
+}
+
+.aboutSplit .aboutVisual {
+  @include mqDown(lg) {
+    margin-top: 2.5rem;
+  }
+}
+
+.storyText {
+  @include mqUp(lg) {
+    padding-left: 2.5rem;
+  }
+
+  @include mqDown(lg) {
+    margin-top: 3rem;
+  }
+}
+
+.storySign {
+  margin-top: 2rem;
+}
+
+.heroActions {
+  margin-top: 2.25rem;
+}
+
+.successActions {
+  justify-content: center;
+  margin-top: 1.75rem;
+}
+
+.contactFormCol {
+  @include mqDown(lg) {
+    margin-bottom: 2rem;
+  }
+}
+
+.hoursBlock {
+  margin-top: 2rem;
+
+  h5 {
+    margin-bottom: 0.75rem;
+  }
+}
+
+.cultureSection {
+  padding-top: 0;
+}
+
+
+.faqAside {
+  @include mqDown(lg) {
+    margin-bottom: 2.5rem;
+  }
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+ol.nextSteps {
+  padding: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.formPanel h3 {
+  font-size: 1.75rem;
+}
+
+.serviceListSection {
+  padding-top: clamp(3rem, 6vw, 5rem);
+}
+
+.pageHero + .marqueeBand.isTilted {
+  margin-top: 3.5rem;
+}

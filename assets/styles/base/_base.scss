@@ -1,0 +1,267 @@
+@use "../abstracts" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: $headerHeight + 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: $fontSans;
+  font-size: $fsBase;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.1px;
+  color: var(--text);
+  background-color: var(--bg);
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accentInk);
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color $durFast ease;
+
+  &:hover {
+    color: var(--accentText);
+  }
+}
+
+:focus-visible {
+  @include focusRing;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+section {
+  position: relative;
+  padding: $sectionSpace 0;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  @include mqUp(xxl) {
+    max-width: 1280px;
+  }
+}
+
+// Skip link
+.skipLink {
+  position: fixed;
+  top: -60px;
+  left: 16px;
+  z-index: 2000;
+  padding: 10px 18px;
+  border-radius: $radiusPill;
+  background: var(--accent);
+  color: var(--accentInk);
+  font-weight: 600;
+  transition: top $durFast ease;
+
+  &:focus {
+    top: 16px;
+    color: var(--accentInk);
+  }
+}
+
+// Ambient page background: grid + noise
+.pageBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: linear-gradient(var(--gridLine) 1px, transparent 1px),
+    linear-gradient(90deg, var(--gridLine) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+}
+
+.noiseLayer {
+  position: fixed;
+  inset: -50%;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+// Scroll progress
+.scrollProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  z-index: 1100;
+  transform-origin: left;
+  transform: scaleX(var(--progress, 0));
+  background: var(--gradientText);
+}
+
+// Cursor glow (desktop)
+.cursorGlow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 420px;
+  height: 420px;
+  margin: -210px 0 0 -210px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle, var(--accentSoft) 0%, transparent 65%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  will-change: transform;
+
+  &.isActive {
+    opacity: 1;
+  }
+
+  @media (hover: none) {
+    display: none;
+  }
+}
+
+// Back to top
+.backToTop {
+  position: fixed;
+  right: 22px;
+  bottom: 92px;
+  z-index: 900;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  @include glass;
+  @include flexCenter;
+  color: var(--text);
+  font-size: 1.2rem;
+  opacity: 0;
+  transform: translateY(20px) scale(0.9);
+  pointer-events: none;
+  transition: opacity $durBase $easeOut, transform $durBase $easeOut, background $durFast ease;
+
+  &.isVisible {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  &:hover {
+    background: var(--accent);
+    color: var(--accentInk);
+  }
+}
+
+// Screen-reader only
+.srOnly {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+// WhatsApp floating button
+.whatsappFab {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 900;
+  height: 56px;
+  min-width: 56px;
+  padding: 0 16px;
+  border-radius: $radiusPill;
+  @include flex(center, center, 10px);
+  background: #25d366;
+  color: #fff;
+  font-weight: 600;
+  font-size: $fsSmall;
+  box-shadow: 0 14px 34px -10px rgba(37, 211, 102, 0.65);
+  transition: transform $durBase $easeOut, box-shadow $durBase ease;
+
+  .bi {
+    font-size: 1.55rem;
+    line-height: 1;
+  }
+
+  // Pulsing ring
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 2px solid #25d366;
+    animation: fabPulse 2.4s ease-out infinite;
+    pointer-events: none;
+  }
+
+  .fabLabel {
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: max-width $durBase $easeOut;
+  }
+
+  &:hover {
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px -10px rgba(37, 211, 102, 0.8);
+
+    .fabLabel {
+      max-width: 140px;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+  }
+}
+
+@keyframes fabPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}

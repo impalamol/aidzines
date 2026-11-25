@@ -1,0 +1,257 @@
+@use "../abstracts" as *;
+
+.enquiryLayout {
+  padding-top: calc(#{$headerHeight} + 4rem);
+}
+
+.enquiryAside {
+  @include mqUp(lg) {
+    position: sticky;
+    top: $headerHeight + 32px;
+  }
+
+  h1 {
+    font-size: $displayLg;
+    letter-spacing: -0.05em;
+    line-height: 1;
+  }
+
+  .nextSteps {
+    margin-top: 2.5rem;
+
+    li {
+      @include flex(flex-start, flex-start, 1rem);
+      padding: 1rem 0;
+      border-top: 1px solid var(--border);
+
+      b {
+        flex-shrink: 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        @include flexCenter;
+        font-size: $fsSmall;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        color: var(--text);
+      }
+
+      strong {
+        display: block;
+        color: var(--text);
+        line-height: 1.3;
+      }
+
+      span {
+        font-size: $fsSmall;
+        color: var(--textMuted);
+      }
+    }
+  }
+
+  .responseCard {
+    @include card;
+    padding: 1.25rem 1.5rem;
+    margin-top: 1.5rem;
+    @include flex(center, flex-start, 1rem);
+
+    p {
+      margin: 0;
+      font-size: $fsSmall;
+    }
+
+    strong {
+      color: var(--text);
+    }
+  }
+}
+
+.stepper {
+  @include flex(center, flex-start, 8px);
+  margin-bottom: 2.5rem;
+}
+
+.stepDot {
+  flex: 1;
+  @include flex(center, flex-start, 10px);
+  font-size: $fsSmall;
+  color: var(--textFaint);
+  font-weight: 500;
+
+  &::before {
+    content: attr(data-step);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    @include flexCenter;
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    font-weight: 600;
+    transition: background $durFast ease, color $durFast ease, border-color $durFast ease;
+  }
+
+  &::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--border);
+  }
+
+  &:last-child {
+    flex: 0 0 auto;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  &.isCurrent {
+    color: var(--text);
+
+    &::before {
+      background: var(--accent);
+      color: var(--accentInk);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 5px var(--accentSoft);
+    }
+  }
+
+  &.isDone {
+    color: var(--textMuted);
+
+    &::before {
+      content: "\2713";
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+
+    &::after {
+      background: var(--accentText);
+    }
+  }
+
+  .stepName {
+    @include mqDown(md) {
+      display: none;
+    }
+  }
+}
+
+.formStep {
+  display: none;
+
+  &.isCurrent {
+    display: block;
+    animation: stepIn 0.6s $easeOut both;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.4rem;
+  }
+
+  > p {
+    margin-bottom: 1.75rem;
+  }
+}
+
+@keyframes stepIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.stepNav {
+  @include flex(center, space-between, 1rem);
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.budgetOutput {
+  font-size: 2.25rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.rangeInput {
+  width: 100%;
+  appearance: none;
+  height: 8px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--accent) var(--fill, 30%), var(--border) var(--fill, 30%));
+  outline: none;
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--text);
+    border: 5px solid var(--accent);
+    cursor: grab;
+    box-shadow: var(--shadowSoft);
+  }
+
+  &::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--text);
+    border: 5px solid var(--accent);
+    cursor: grab;
+  }
+
+  &:focus-visible {
+    @include focusRing;
+  }
+}
+
+.rangeScale {
+  @include flex(center, space-between);
+  font-size: $fsXSmall;
+  color: var(--textFaint);
+  margin-top: 0.5rem;
+}
+
+.summaryList {
+  @include card;
+  border-radius: $radiusMd;
+  padding: 0.5rem 1.25rem;
+  background: var(--bg);
+
+  li {
+    @include flex(flex-start, space-between, 1rem);
+    padding: 0.75rem 0;
+    font-size: $fsSmall;
+
+    & + li {
+      border-top: 1px solid var(--border);
+    }
+
+    span {
+      color: var(--textMuted);
+    }
+
+    strong {
+      text-align: right;
+      font-weight: 500;
+    }
+  }
+}
+
+.enquiryFormCol {
+  @include mqDown(lg) {
+    margin-top: 3rem;
+  }
+}

@@ -1,0 +1,159 @@
+@use "../abstracts" as *;
+
+.storyBlock {
+  .storyQuote {
+    font-size: clamp(1.5rem, 2.8vw, 2.4rem);
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 2rem;
+  }
+}
+
+.valueCard {
+  @include card;
+  padding: 2rem;
+  height: 100%;
+  transition: transform $durBase $easeOut, border-color $durFast ease;
+
+  h4 {
+    font-size: 1.3rem;
+    margin: 1.5rem 0 0.5rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: var(--borderStrong);
+
+    .iconTile {
+      background: var(--accent);
+      color: var(--accentInk);
+      transform: rotate(-8deg);
+    }
+  }
+}
+
+// Timeline
+.timeline {
+  position: relative;
+  padding-left: 2.25rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent), var(--secondary), transparent);
+  }
+}
+
+.timelineItem {
+  position: relative;
+  padding-bottom: 2.75rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -2.25rem;
+    top: 6px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 3px solid var(--accentText);
+  }
+
+  .timelineDate {
+    font-size: $fsSmall;
+    font-weight: 600;
+    color: var(--accentText);
+    letter-spacing: 0.06em;
+  }
+
+  h4 {
+    font-size: 1.35rem;
+    margin: 0.35rem 0 0.4rem;
+  }
+
+  p {
+    margin: 0;
+    max-width: 52ch;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+// Team
+.teamCard {
+  margin-bottom: 2rem;
+
+  .teamPortrait {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: $radiusLg;
+    overflow: hidden;
+    background: radial-gradient(90% 70% at 30% 20%, var(--c1), transparent 70%),
+      radial-gradient(80% 80% at 90% 100%, var(--c2), transparent 60%), $inkRaised;
+    @include flexCenter;
+    margin-bottom: 1.1rem;
+
+    .teamInitials {
+      font-size: clamp(3rem, 6vw, 4.5rem);
+      font-weight: 700;
+      letter-spacing: -0.07em;
+      color: rgba(255, 255, 255, 0.92);
+      transition: transform $durSlow $easeOut;
+    }
+
+    .teamSocial {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem;
+      @include flex(center, flex-start, 6px);
+      transform: translateY(150%);
+      transition: transform $durBase $easeOut;
+
+      a {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.92);
+        color: $ink;
+        @include flexCenter;
+
+        &:hover {
+          background: $lime;
+        }
+      }
+    }
+  }
+
+  h5 {
+    margin-bottom: 0.15rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: $fsSmall;
+  }
+
+  &:hover {
+    .teamInitials {
+      transform: scale(1.12) rotate(-4deg);
+    }
+
+    .teamSocial {
+      transform: none;
+    }
+  }
+}

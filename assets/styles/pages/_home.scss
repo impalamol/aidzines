@@ -1,0 +1,721 @@
+@use "../abstracts" as *;
+
+// ==========================================================
+// Home: hero
+// ==========================================================
+.heroSection {
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: calc(#{$headerHeight} + 3.5rem) 0 3rem;
+  @include flex(center);
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    @include absFill;
+    background: url(../images/hero.jpg) center / cover no-repeat;
+    mix-blend-mode: luminosity;
+    opacity: var(--heroImageOpacity);
+    z-index: -2;
+    mask-image: linear-gradient(180deg, #000 30%, transparent);
+    -webkit-mask-image: linear-gradient(180deg, #000 30%, transparent);
+  }
+
+  > .container {
+    position: relative;
+  }
+}
+
+.heroBadge {
+  @include flex(center, flex-start, 10px);
+  display: inline-flex;
+  padding: 6px 14px 6px 6px;
+  border-radius: $radiusPill;
+  @include glass;
+  font-size: $fsSmall;
+  color: var(--textMuted);
+  margin-bottom: 1.75rem;
+
+  .badgeTag {
+    padding: 3px 10px;
+    border-radius: $radiusPill;
+    background: var(--accent);
+    color: var(--accentInk);
+    font-weight: 600;
+    font-size: $fsXSmall;
+  }
+
+  .liveDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+    animation: pulseDot 2s infinite;
+  }
+}
+
+.heroTitle {
+  font-size: $displayXl;
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+  margin-bottom: 1.75rem;
+
+  .serifItalic {
+    font-size: 1.08em;
+    letter-spacing: -0.03em;
+  }
+}
+
+// Rotating words
+.wordRotator {
+  position: relative;
+  display: inline-grid;
+  vertical-align: bottom;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+
+  .rotatorWord {
+    grid-area: 1 / 1;
+    @include gradientText;
+    opacity: 0;
+    transform: translateY(110%);
+
+    &.isActive {
+      animation: wordIn 0.8s $easeOut forwards;
+    }
+
+    &.isLeaving {
+      animation: wordOut 0.6s $easeInOut forwards;
+    }
+  }
+}
+
+.heroLead {
+  max-width: 54ch;
+  margin-bottom: 2.25rem;
+}
+
+.heroProof {
+  @include flex(center, flex-start, 1rem);
+  margin-top: 2.75rem;
+
+  p {
+    margin: 0;
+    font-size: $fsSmall;
+    line-height: 1.4;
+
+    strong {
+      color: var(--text);
+    }
+  }
+}
+
+.avatarStack {
+  display: flex;
+
+  .avatarBubble {
+    width: 40px;
+    height: 40px;
+    font-size: 0.78rem;
+    border: 3px solid var(--bg);
+
+    & + .avatarBubble {
+      margin-left: -12px;
+    }
+  }
+}
+
+// Hero visual composition
+.heroVisual {
+  position: relative;
+  height: 100%;
+  min-height: 520px;
+
+  @include mqDown(lg) {
+    min-height: 460px;
+    margin-top: 3.5rem;
+  }
+
+  @include mqDown(sm) {
+    min-height: 400px;
+  }
+}
+
+.heroLayer {
+  position: absolute;
+  transition: transform 0.6s $easeOut;
+  will-change: transform;
+}
+
+.heroCard {
+  @include glass(22px);
+  border-radius: $radiusLg;
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+}
+
+.heroDashboard {
+  top: 6%;
+  left: 4%;
+  right: 6%;
+
+  .dashHead {
+    @include flex(center, space-between);
+    margin-bottom: 1rem;
+
+    strong {
+      font-size: 0.95rem;
+    }
+  }
+
+  .dashKpis {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 1rem;
+
+    > div {
+      padding: 0.75rem;
+      border-radius: 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+
+    span {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--textMuted);
+    }
+
+    b {
+      font-size: 1.2rem;
+      letter-spacing: -0.03em;
+    }
+
+    em {
+      font-style: normal;
+      font-size: 0.7rem;
+      color: #22c55e;
+      margin-left: 4px;
+    }
+  }
+
+  .dashChart {
+    @include flex(flex-end, space-between, 6px);
+    height: 120px;
+    padding-top: 0.5rem;
+
+    i {
+      flex: 1;
+      height: var(--h);
+      border-radius: 6px 6px 2px 2px;
+      background: linear-gradient(180deg, var(--secondary), transparent);
+      transform-origin: bottom;
+      animation: barGrow 1.4s $easeOut both;
+      animation-delay: calc(var(--i) * 80ms + 400ms);
+
+      &.isPeak {
+        background: linear-gradient(180deg, var(--accent), transparent);
+      }
+    }
+  }
+}
+
+.heroPhone {
+  right: 0;
+  bottom: 0;
+  width: 190px;
+  aspect-ratio: 9 / 18;
+  border-radius: 30px;
+  padding: 7px;
+  background: #0a0f14;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: var(--shadow);
+
+  @include mqDown(sm) {
+    width: 150px;
+  }
+
+  .phoneScreen {
+    height: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    background: linear-gradient(170deg, $violet, #2a1a8f 60%, #0b0f14);
+    padding: 28px 12px 12px;
+    color: #fff;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 16px;
+      border-radius: 10px;
+      background: #0a0f14;
+    }
+
+    small {
+      font-size: 0.65rem;
+      opacity: 0.7;
+    }
+
+    .phoneBalance {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 0.8rem;
+    }
+
+    .phoneRing {
+      width: 82px;
+      height: 82px;
+      margin: 0.4rem auto 0.9rem;
+      border-radius: 50%;
+      background: conic-gradient($lime 0 68%, rgba(255, 255, 255, 0.15) 68% 100%);
+      @include flexCenter;
+      animation: spinSlow 30s linear infinite;
+
+      &::after {
+        content: "";
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: #2a1a8f;
+      }
+    }
+
+    .phoneRow {
+      height: 26px;
+      border-radius: 9px;
+      background: rgba(255, 255, 255, 0.12);
+      margin-top: 6px;
+    }
+  }
+}
+
+.heroChip {
+  @include flex(center, flex-start, 10px);
+  padding: 0.75rem 1rem;
+  border-radius: $radiusMd;
+  font-size: $fsSmall;
+  font-weight: 600;
+  white-space: nowrap;
+
+  .chipIcon {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    @include flexCenter;
+    background: var(--accent);
+    color: var(--accentInk);
+  }
+
+  small {
+    display: block;
+    font-weight: 400;
+    color: var(--textMuted);
+    font-size: 0.72rem;
+  }
+}
+
+.heroChipGrowth {
+  left: 0;
+  bottom: 14%;
+
+  .floatInner {
+    animation: floatY 6s ease-in-out infinite;
+  }
+}
+
+.heroChipCode {
+  top: 0;
+  right: 2%;
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-weight: 500;
+
+  .floatInner {
+    animation: floatY 7s ease-in-out infinite -2s;
+  }
+
+  .chipIcon {
+    background: var(--secondary);
+    color: #fff;
+  }
+}
+
+.heroOrbit {
+  left: 30%;
+  bottom: 4%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1px dashed var(--borderStrong);
+  animation: spinSlow 18s linear infinite;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 20px var(--accent);
+  }
+
+  @include mqDown(sm) {
+    display: none;
+  }
+}
+
+.heroScrollHint {
+  @include flex(center, flex-start, 12px);
+  margin-top: 3rem;
+  font-size: $fsXSmall;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--textFaint);
+
+  .mouseIcon {
+    width: 22px;
+    height: 34px;
+    border-radius: 12px;
+    border: 1.5px solid var(--borderStrong);
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      width: 3px;
+      height: 7px;
+      margin-left: -1.5px;
+      border-radius: 2px;
+      background: var(--accentText);
+      animation: floatY 1.6s ease-in-out infinite reverse;
+    }
+  }
+}
+
+// ==========================================================
+// Home: services bento
+// ==========================================================
+.bentoGrid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+
+  @include mqUp(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mqUp(lg) {
+    grid-template-columns: repeat(12, 1fr);
+
+    .bentoCard {
+      grid-column: span 4;
+
+      &.isWide {
+        grid-column: span 8;
+      }
+
+      &.isHalf {
+        grid-column: span 6;
+      }
+    }
+  }
+}
+
+.bentoCard {
+  @include card;
+  padding: 2rem;
+  min-height: 300px;
+  @include flex(stretch, space-between);
+  flex-direction: column;
+  gap: 2rem;
+  transition: border-color $durFast ease, transform $durBase $easeOut, background $durFast ease;
+
+  h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.6rem;
+  }
+
+  p {
+    margin: 0;
+    max-width: 46ch;
+  }
+
+  .bentoTop {
+    @include flex(flex-start, space-between, 1rem);
+  }
+
+  .bentoIndex {
+    font-size: $fsSmall;
+    color: var(--textFaint);
+    font-weight: 500;
+  }
+
+  .bentoArrow {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    @include flexCenter;
+    transition: transform $durBase $easeOut, background $durFast ease, color $durFast ease;
+  }
+
+  &:hover {
+    border-color: var(--borderStrong);
+    transform: translateY(-4px);
+
+    .bentoArrow {
+      background: var(--accent);
+      color: var(--accentInk);
+      transform: rotate(45deg);
+    }
+
+    .iconTile {
+      transform: rotate(-8deg) scale(1.06);
+      background: var(--accent);
+      color: var(--accentInk);
+    }
+  }
+
+  &.isFeatured {
+    background: linear-gradient(150deg, var(--secondarySoft), var(--surface) 60%);
+  }
+}
+
+.bentoPreview {
+  @include flex(center, flex-start, 8px);
+  flex-wrap: wrap;
+}
+
+// ==========================================================
+// Home: about split
+// ==========================================================
+.aboutSplit {
+  .aboutStatement {
+    font-size: clamp(1.6rem, 3.2vw, 2.75rem);
+    font-weight: 500;
+    line-height: 1.22;
+    letter-spacing: -0.035em;
+    color: var(--text);
+    margin-bottom: 2rem;
+
+    .dimWord {
+      color: var(--textFaint);
+      transition: color 0.4s ease;
+
+      &.isLit {
+        color: var(--text);
+      }
+    }
+  }
+}
+
+.aboutVisual {
+  position: relative;
+  border-radius: $radiusXl;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: url(../images/hero.jpg) center / cover no-repeat;
+
+  &::after {
+    content: "";
+    @include absFill;
+    background: linear-gradient(180deg, transparent 40%, rgba(0, 15, 22, 0.85));
+  }
+
+  .aboutBadge {
+    position: absolute;
+    left: 1.5rem;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 1;
+    @include glass;
+    border-radius: $radiusMd;
+    padding: 1.1rem 1.25rem;
+    color: #fff;
+    @include flex(center, space-between, 1rem);
+
+    strong {
+      font-size: 2rem;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    span {
+      font-size: $fsSmall;
+      opacity: 0.8;
+    }
+  }
+
+  .aboutSticker {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 1;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--accentInk);
+    @include flexCenter;
+    flex-direction: column;
+    text-align: center;
+    font-weight: 700;
+    line-height: 1.05;
+    font-size: 0.85rem;
+    transform: rotate(12deg);
+
+    b {
+      font-size: 1.8rem;
+      letter-spacing: -0.05em;
+    }
+  }
+}
+
+// ==========================================================
+// Home: featured work
+// ==========================================================
+.workCard {
+  display: block;
+  color: var(--text);
+  margin-bottom: 2.5rem;
+
+  &:hover {
+    color: var(--text);
+  }
+
+  .workMeta {
+    @include flex(flex-start, space-between, 1rem);
+    margin-top: 1.25rem;
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+  }
+
+  .workYear {
+    font-size: $fsSmall;
+    color: var(--textFaint);
+    white-space: nowrap;
+    padding-top: 0.4rem;
+  }
+
+  .projectVisual {
+    border-radius: $radiusLg;
+  }
+
+  .workHoverCta {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 110px;
+    height: 110px;
+    margin: -55px 0 0 -55px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--accentInk);
+    @include flexCenter;
+    font-weight: 600;
+    font-size: $fsSmall;
+    transform: scale(0);
+    transition: transform $durBase $easeOut;
+    z-index: 2;
+  }
+
+  &:hover {
+    .workHoverCta {
+      transform: scale(1);
+    }
+
+    .mockBrowser {
+      transform: translateY(4%) rotate(0deg) scale(1.03);
+    }
+
+    .mockPhone {
+      transform: rotate(0deg) translateY(-6%);
+    }
+
+    .mockBrandMark {
+      transform: rotate(0deg) scale(1.08);
+    }
+  }
+
+  @include mqUp(md) {
+    &.isOffset {
+      margin-top: 7rem;
+    }
+  }
+}
+
+// ==========================================================
+// Home: industries + FAQ
+// ==========================================================
+.industryCloud {
+  @include flex(center, center, 10px);
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: 0 auto;
+
+  .tagPill {
+    font-size: 1rem;
+    padding: 0.7rem 1.3rem;
+    color: var(--text);
+    transition: background $durFast ease, color $durFast ease, transform $durBase $easeOut;
+
+    .bi {
+      color: var(--accentText);
+    }
+
+    &:hover {
+      background: var(--accent);
+      color: var(--accentInk);
+      transform: translateY(-3px) rotate(-2deg);
+
+      .bi {
+        color: var(--accentInk);
+      }
+    }
+  }
+}
+
+.faqAside {
+  @include mqUp(lg) {
+    position: sticky;
+    top: $headerHeight + 40px;
+  }
+
+  .faqHelp {
+    @include card;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    @include flex(center, flex-start, 1rem);
+
+    p {
+      margin: 0;
+      font-size: $fsSmall;
+    }
+
+    strong {
+      display: block;
+      color: var(--text);
+    }
+  }
+}

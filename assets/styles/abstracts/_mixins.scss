@@ -1,0 +1,101 @@
+@use "sass:map";
+@use "variables" as *;
+
+// Media queries ---------------------------------------------
+@mixin mqUp($bp) {
+  @media (min-width: map.get($breakpoints, $bp)) {
+    @content;
+  }
+}
+
+@mixin mqDown($bp) {
+  @media (max-width: (map.get($breakpoints, $bp) - 0.02px)) {
+    @content;
+  }
+}
+
+@mixin hoverOnly {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}
+
+@mixin reducedMotion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+// Layout helpers --------------------------------------------
+@mixin flex($align: center, $justify: flex-start, $gap: 0) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  @if $gap != 0 {
+    gap: $gap;
+  }
+}
+
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin absFill {
+  position: absolute;
+  inset: 0;
+}
+
+// Surfaces --------------------------------------------------
+@mixin glass($blur: 18px) {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur($blur) saturate(140%);
+  -webkit-backdrop-filter: blur($blur) saturate(140%);
+}
+
+@mixin card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: $radiusLg;
+}
+
+// Gradient border using a masked pseudo-element
+@mixin gradientBorder($radius: $radiusLg, $width: 1px, $gradient: var(--gradientBorder)) {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: $width;
+    border-radius: $radius;
+    background: $gradient;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+@mixin gradientText($gradient: var(--gradientText)) {
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding-right: 0.06em; // keeps italic glyph tails inside the clipped gradient
+  background: $gradient;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@mixin focusRing {
+  outline: 2px solid var(--accentText);
+  outline-offset: 3px;
+}
+
+@mixin lineClamp($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

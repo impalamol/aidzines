@@ -1,0 +1,209 @@
+@use "../abstracts" as *;
+
+.siteHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1050;
+  padding: 12px 0;
+  // Own compositing layer so content scrolling underneath can't cause repaint flicker
+  transform: translateZ(0);
+  backface-visibility: hidden;
+
+  &.isScrolled .mainNav .navShell {
+    // Near-opaque solid fill (no backdrop blur) keeps the bar steady over animated cards
+    background: var(--headerBg);
+    border-color: var(--border);
+    box-shadow: var(--shadowSoft);
+  }
+}
+
+.mainNav {
+  --bs-navbar-padding-y: 0;
+  --bs-navbar-padding-x: 0;
+  padding: 0;
+
+  .navShell {
+    width: 100%;
+    @include flex(center, space-between);
+    flex-wrap: wrap;
+    padding: 10px 10px 10px 20px;
+    border-radius: $radiusPill;
+    border: 1px solid transparent;
+    transition: background $durBase ease, border-color $durBase ease, box-shadow $durBase ease;
+
+    @include mqDown(lg) {
+      border-radius: $radiusLg;
+    }
+  }
+
+  .navbar-collapse {
+    @include mqUp(lg) {
+      flex-grow: 1;
+    }
+  }
+
+  .navbar-nav {
+    gap: 4px;
+
+    @include mqUp(lg) {
+      margin-inline: auto;
+      padding: 5px;
+      border-radius: $radiusPill;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+  }
+
+  .nav-link {
+    position: relative;
+    font-size: 0.93rem;
+    font-weight: 500;
+    color: var(--textMuted);
+    padding: 0.5rem 1rem !important;
+    border-radius: $radiusPill;
+    transition: color $durFast ease, background $durFast ease;
+
+    &:hover {
+      color: var(--text);
+    }
+
+    &.active {
+      color: var(--accentInk);
+      background: var(--accent);
+    }
+
+    @include mqDown(lg) {
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      padding: 0.6rem 0.25rem !important;
+      border-radius: 0;
+      border-bottom: 1px solid var(--border);
+
+      &.active {
+        background: transparent;
+        color: var(--accentText);
+      }
+    }
+  }
+
+  .navbar-toggler {
+    border: 0;
+    padding: 0;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    @include flexCenter;
+    flex-direction: column;
+    gap: 5px;
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:focus-visible {
+      @include focusRing;
+    }
+
+    .togglerLine {
+      width: 18px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--text);
+      transition: transform $durBase $easeOut, opacity $durFast ease;
+    }
+
+    &[aria-expanded="true"] {
+      .togglerLine:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .togglerLine:nth-child(2) {
+        opacity: 0;
+      }
+      .togglerLine:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+    }
+  }
+}
+
+.navActions {
+  @include flex(center, flex-end, 10px);
+
+  @include mqDown(lg) {
+    margin-top: 1.25rem;
+    padding-bottom: 0.5rem;
+    justify-content: space-between;
+  }
+}
+
+.navMobileTools {
+  @include flex(center, flex-end, 8px);
+}
+
+// Brand -------------------------------------------------------
+.brandLogo {
+  @include flex(center, flex-start, 10px);
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--text);
+  margin-right: 1rem;
+
+  &:hover {
+    color: var(--text);
+
+    .brandMark {
+      transform: rotate(-12deg) scale(1.06);
+    }
+  }
+}
+
+.brandMark {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: var(--accentInk);
+  @include flexCenter;
+  transition: transform $durBase $easeOut;
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.18);
+
+  svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.brandWord {
+  b {
+    font-weight: 700;
+    color: var(--accentText);
+  }
+}
+
+// Mobile panel
+@include mqDown(lg) {
+  .mainNav .navbar-collapse {
+    width: 100%;
+    padding: 1rem 0.25rem 0.25rem;
+  }
+
+  .siteHeader.isMenuOpen .mainNav .navShell {
+    background: var(--headerBg);
+    border-color: var(--border);
+    box-shadow: var(--shadow);
+  }
+}
+
+.navMobileTools {
+  @include mqUp(lg) {
+    display: none;
+  }
+}
+

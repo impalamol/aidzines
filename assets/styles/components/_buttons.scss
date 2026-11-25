@@ -1,0 +1,202 @@
+@use "../abstracts" as *;
+
+// Bootstrap .btn is the base; custom camelCase modifiers style it.
+.btn {
+  --bs-btn-padding-x: 1.4rem;
+  --bs-btn-padding-y: 0.85rem;
+  --bs-btn-font-size: 0.95rem;
+  --bs-btn-font-weight: 600;
+  --bs-btn-border-radius: #{$radiusPill};
+  --bs-btn-focus-box-shadow: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: $fontSans;
+  letter-spacing: -0.01em;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform $durBase $easeOut, background-color $durFast ease, color $durFast ease,
+    border-color $durFast ease, box-shadow $durBase ease;
+
+  &:focus-visible {
+    @include focusRing;
+  }
+
+  .bi {
+    font-size: 1.05em;
+    line-height: 1;
+  }
+}
+
+// Text-roll label: <span class="btnLabel" data-text="Same text">Same text</span>
+.btnLabel {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1.2;
+
+  > span {
+    display: block;
+    transition: transform $durBase $easeOut;
+  }
+
+  &::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    transition: transform $durBase $easeOut;
+  }
+}
+
+.btnIcon {
+  @include flexCenter;
+  width: 30px;
+  height: 30px;
+  margin-right: -0.7rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: transform $durBase $easeOut, background $durFast ease;
+}
+
+@include hoverOnly {
+  .btn:hover {
+    .btnLabel > span,
+    .btnLabel::after {
+      transform: translateY(-100%);
+    }
+
+    .btnIcon {
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.btnPrimary {
+  --bs-btn-color: var(--accentInk);
+  --bs-btn-bg: var(--accent);
+  --bs-btn-border-color: var(--accent);
+  --bs-btn-hover-color: var(--accentInk);
+  --bs-btn-hover-bg: var(--accent);
+  --bs-btn-hover-border-color: var(--accent);
+  --bs-btn-active-color: var(--accentInk);
+  --bs-btn-active-bg: var(--accent);
+  --bs-btn-active-border-color: var(--accent);
+  box-shadow: 0 10px 40px -12px rgba(198, 255, 61, 0.55);
+
+  .btnIcon {
+    background: var(--accentInk);
+    color: var(--accent);
+  }
+
+  &:hover {
+    box-shadow: 0 16px 50px -12px rgba(198, 255, 61, 0.75);
+  }
+}
+
+.btnDark {
+  --bs-btn-color: var(--bg);
+  --bs-btn-bg: var(--text);
+  --bs-btn-border-color: var(--text);
+  --bs-btn-hover-color: var(--bg);
+  --bs-btn-hover-bg: var(--text);
+  --bs-btn-hover-border-color: var(--text);
+  --bs-btn-active-color: var(--bg);
+  --bs-btn-active-bg: var(--text);
+
+  .btnIcon {
+    background: var(--accent);
+    color: var(--accentInk);
+  }
+}
+
+.btnGhost {
+  --bs-btn-color: var(--text);
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: var(--borderStrong);
+  --bs-btn-hover-color: var(--text);
+  --bs-btn-hover-bg: var(--surfaceHover);
+  --bs-btn-hover-border-color: var(--text);
+  --bs-btn-active-color: var(--text);
+  --bs-btn-active-bg: var(--surfaceHover);
+  --bs-btn-active-border-color: var(--text);
+
+  .btnIcon {
+    background: var(--surfaceHover);
+    border: 1px solid var(--border);
+  }
+}
+
+.btnSmall {
+  --bs-btn-padding-x: 1.1rem;
+  --bs-btn-padding-y: 0.6rem;
+  --bs-btn-font-size: 0.875rem;
+
+  .btnIcon {
+    width: 24px;
+    height: 24px;
+    margin-right: -0.55rem;
+  }
+}
+
+.btnLarge {
+  --bs-btn-padding-x: 1.9rem;
+  --bs-btn-padding-y: 1.1rem;
+  --bs-btn-font-size: 1.05rem;
+
+  .btnIcon {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+// Inline arrow link
+.arrowLink {
+  @include flex(center, flex-start, 0.5rem);
+  display: inline-flex;
+  font-weight: 600;
+  color: var(--text);
+  position: relative;
+  padding-bottom: 2px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0.3);
+    transform-origin: left;
+    transition: transform $durBase $easeOut;
+  }
+
+  .bi {
+    transition: transform $durBase $easeOut;
+  }
+
+  &:hover {
+    color: var(--accentText);
+
+    &::after {
+      transform: scaleX(1);
+    }
+
+    .bi {
+      transform: translate(3px, -3px);
+    }
+  }
+}
+
+.btnGroupInline {
+  @include flex(center, flex-start, 0.85rem);
+  flex-wrap: wrap;
+}
+
+// Magnetic wrapper (JS sets --mx/--my)
+[data-magnetic] {
+  transform: translate(var(--mx, 0), var(--my, 0));
+}
